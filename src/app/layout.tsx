@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { NextUIProvider } from "@nextui-org/system";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import NavBar from "@/components/navbar";
+import {dark} from "@clerk/themes"
 
 export const metadata: Metadata = {
   title: "cine",
@@ -14,14 +15,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={{baseTheme: dark, variables: {colorBackground:'transparent', fontSize:'text-xl'}}}>
           <html lang="en" suppressHydrationWarning>
             <body className="min-h-screen">
               <NextThemesProvider attribute="class" defaultTheme="dark">
               <NextUIProvider>
                 <div className="relative flex flex-col h-screen">
                   <NavBar/>
-                  <main>
+                  <main className="flex-1">
                   {children}
                   </main>
                 </div>

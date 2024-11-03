@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Home() {
+function Extras() {
   return (
     <div className='main-div'>
-            Home
+      Extras
     </div>
   )
 }
 
-export default Home
+export default Extras

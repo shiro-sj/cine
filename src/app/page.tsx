@@ -12,8 +12,8 @@ export default function Page() {
   }
 
   return (
-    <div>
+    <>
       {isSignedIn ? <Home /> : <Landing />}
-    </div>
+    </>
   );
 }

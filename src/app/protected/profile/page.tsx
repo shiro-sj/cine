@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Home() {
+function Profile() {
   return (
     <div className='main-div'>
-            Home
+        Profile
     </div>
   )
 }
 
-export default Home
+export default Profile

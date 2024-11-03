@@ -4,17 +4,17 @@ import React from 'react'
 import {  Navbar ,   NavbarBrand,   NavbarContent,   NavbarItem,   NavbarMenuToggle,  NavbarMenu,  NavbarMenuItem} from "@nextui-org/navbar";
 import Link from 'next/link';
 import { SignInButton, SignOutButton, SignUpButton, useUser } from '@clerk/nextjs';
-import {Button, ButtonGroup} from "@nextui-org/button";
+import {Button} from "@nextui-org/button";
 
 const userMenuItems = [
-    { title: 'Home', path: '/protected' },
-    { title: 'Stats', path: '/protected/stats' },
-    { title: 'Profile', path: '/protected/profile' },
+    { title: 'home', path: '/protected' },
+    { title: 'stats', path: '/protected/stats' },
+    { title: 'profile', path: '/protected/profile' },
   ];
 const guestMenuItems = [
-    { title: 'About', path: '/' },
-    { title: 'Documentation', path: '/' },
-    { title: 'Contact Us', path: '/' },
+    { title: 'about', path: '/' },
+    { title: 'documentation', path: '/' },
+    { title: 'contact us', path: '/' },
   ];
 
 
@@ -22,7 +22,7 @@ function NavBar() {
     const {isSignedIn} = useUser();
 
   return (
-    <Navbar position='sticky'  maxWidth='full' shouldHideOnScroll isBlurred >
+    <Navbar position='sticky'  maxWidth='full' shouldHideOnScroll isBlurred>
         <NavbarContent justify='start'>
             <NavbarBrand className='text-2xl font-bold'>
                 cine
@@ -51,14 +51,12 @@ function NavBar() {
         <NavbarContent justify='end' className='gap-4'>
             {isSignedIn? (
                 <NavbarItem>
-                    <SignOutButton>
-                    </SignOutButton>
+                    <SignOutButton/>
                 </NavbarItem>
             ):(
                 <>
                 <NavbarItem>
-                    <SignInButton>
-                    </SignInButton>
+                    <SignInButton/>
                 </NavbarItem>
                 <NavbarItem>
                     <SignUpButton>
@@ -75,4 +73,4 @@ function NavBar() {
   )
 }
 
-export default NavBar
+export default NavBar;
