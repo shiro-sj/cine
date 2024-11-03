@@ -5,11 +5,15 @@ import Home from "./protected/page";
 
 
 export default function Page() {
-  const { isSignedIn } = useUser();
+  const { isSignedIn, isLoaded } = useUser();
+
+  if (!isLoaded) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
-      {isSignedIn? <Home/>: <Landing/>}
+      {isSignedIn ? <Home /> : <Landing />}
     </div>
   );
 }

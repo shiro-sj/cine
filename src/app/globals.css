@@ -2,20 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/**********FONTS***********/
+@font-face {
+  font-family: 'FormulaCondensedBold';
+  src: url('../app/fonts/FormulaCondensed-Bold.otf'),
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: 'FormulaCondensedLight';
+  src: url('../app/fonts/FormulaCondensed-Light.otf'),
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@font-face {
+  font-family: 'DepartureMono';
+  src: url('../app/fonts/DepartureMono-Regular.woff'),
+       url('../app/fonts/DepartureMono-Regular.woff2'),
 }
+
+@font-face {
+  font-family: 'InclusiveSans';
+  src: url('../app/fonts/InclusiveSans-Regular.woff2'),
+}
+
+@font-face {
+  font-family: 'InclusiveItalic';
+  src: url('../app/fonts/InclusiveSans-Italic.woff2'),
+}
+
+body{
+  font-family: InclusiveSans, Arial, Helvetica, sans-serif;
+  @apply tracking-widest p-8;
+}
+
+.main-div{
+  @apply flex flex-col gap-10 text-2xl justify-center items-center;
+}
+
+

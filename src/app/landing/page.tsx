@@ -3,9 +3,12 @@ import React from 'react'
 
 function Landing() {
   return (
-    <div>Landing
-        <SignInButton/>
-        <SignUpButton/>
+    <div className='main-div'>
+        <div className='h-96'>test</div>
+        <div className='h-96'>test</div>
+        <div className='h-96'>test</div>
+        <div className='h-96'>test</div>
+        <div className='h-96'>test</div>
     </div>
   )
 }
