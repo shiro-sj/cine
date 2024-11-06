@@ -6,6 +6,7 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/(protected)/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
   ],
   darkMode: "class",
@@ -27,8 +28,8 @@ const config: Config = {
               600: "#F182F6",
               700: "#FCADF9",
               800: "#FDD5F9",
-              900: "#140028",
-              DEFAULT: "#180030",
+              900: "#FEECFE",
+              DEFAULT: "#DD62ED",
               foreground: "#ffffff",
             },
             focus: "#F182F6",

@@ -5,28 +5,28 @@
 /**********FONTS***********/
 @font-face {
   font-family: 'FormulaCondensedBold';
-  src: url('../app/fonts/FormulaCondensed-Bold.otf'),
+  src: url('/fonts/FormulaCondensed-Bold.otf'),
 }
 
 @font-face {
   font-family: 'FormulaCondensedLight';
-  src: url('../app/fonts/FormulaCondensed-Light.otf'),
+  src: url('/fonts/FormulaCondensed-Light.otf'),
 }
 
 @font-face {
   font-family: 'DepartureMono';
-  src: url('../app/fonts/DepartureMono-Regular.woff'),
-       url('../app/fonts/DepartureMono-Regular.woff2'),
+  src: url('/fonts/DepartureMono-Regular.woff'),
+       url('/fonts/DepartureMono-Regular.woff2'),
 }
 
 @font-face {
   font-family: 'InclusiveSans';
-  src: url('../app/fonts/InclusiveSans-Regular.woff2'),
+  src: url('/fonts/InclusiveSans-Regular.woff2'),
 }
 
 @font-face {
   font-family: 'InclusiveItalic';
-  src: url('../app/fonts/InclusiveSans-Italic.woff2'),
+  src: url('/fonts/InclusiveSans-Italic.woff2'),
 }
 
 body {
@@ -38,55 +38,55 @@ main {
   @apply flex-1 flex box-border p-2 md:p-4 lg:p-8;
 }
 
-.main-div {
+/* .main-div {
   @apply flex-1 flex flex-col;
-}
+} */
 
 /*****************CONTAINERS************************/
 
-.container-v{
+/* .container-v{
   @apply flex flex-row flex-1 h-full w-full;
 }
 
 .container-h{
   @apply flex flex-col flex-1 h-full w-full;
-}
+} */
 
-.container-md {
+/* .container-md {
   @apply flex w-full md:h-[100vh] lg:h-[60vh] h-[150vh] mb-8 lg:mb-10;
 }
 
 .container-sm {
-  @apply md:h-[25vh] lg:h-[30vh] h-[20vh] mb-6 lg:mb-10;
-}
+  @apply md:h-[25vh] lg:h-[30vh] h-[20vh] mb-6 lg:mb-10; */
+/* } */
 
-.content-v{
-  @apply flex flex-col flex-1 h-full w-full
+/* .content-v{
+  @apply flex flex-col flex-1 h-full w-full;
 }
 
 .content-h{
-  @apply flex flex-row flex-1 h-full w-full
-}
+  @apply flex flex-row flex-1 h-full w-full;
+} */
 
-.cl-rootBox{
-  @apply basis-3/4 h-full w-5/6 md:w-1/2 lg:w-3/5 flex justify-center items-center
+/* .cl-rootBox{
+  @apply basis-3/4 h-full w-5/6 md:w-1/2 lg:w-3/5 flex justify-center items-center;
 }
 
 .cl-cardBox{
-  @apply flex-1 flex w-full h-full
+  @apply flex-1 flex w-full h-full;
 }
 
 .cl-card{
-  @apply flex basis-3/4
+  @apply flex basis-3/4;
 }
 
 .cl-footer{
-  @apply flex basis-1/4
-}
+  @apply flex basis-1/4;
+} */
 
 /*****************STATS***************************/
 
-.stats-grid {
+/* .stats-grid {
   @apply flex-1 flex flex-col md:grid md:grid-cols-2 lg:grid lg:grid-cols-4 gap-4;
 }
 
@@ -112,11 +112,11 @@ main {
 
 .stats-icon {
   @apply absolute top-3 right-4 text-5xl;
-}
+} */
 
 /*****************************FONTS*****************************/
 
-h1 {
+/* h1 {
   @apply text-4xl;
 }
 
@@ -126,4 +126,4 @@ h2 {
 
 h3 {
   @apply text-lg md:text-xl lg:text-2xl;
-}
+} */
