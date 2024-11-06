@@ -1,6 +1,7 @@
-'use client';
-import dynamic from 'next/dynamic';
-import { useUser } from '@clerk/nextjs';
+"use client"
+import { useUser } from "@clerk/nextjs";
+import Landing from "./landing/page";
+import Home from "./(protected)/page";
 
 const Landing = dynamic(() => import('./landing/page'), { ssr: false });
 const Home = dynamic(() => import('./(protected)/page'), { ssr: false });
