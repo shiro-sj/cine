@@ -1,15 +1,15 @@
 'use client'
 import React from 'react'
 
-import {  Navbar ,   NavbarBrand,   NavbarContent,   NavbarItem,   NavbarMenuToggle,  NavbarMenu,  NavbarMenuItem} from "@nextui-org/navbar";
+import {  Navbar ,   NavbarBrand,   NavbarContent,   NavbarItem} from "@nextui-org/navbar";
 import Link from 'next/link';
 import { SignInButton, SignOutButton, SignUpButton, useUser } from '@clerk/nextjs';
 import {Button} from "@nextui-org/button";
 
 const userMenuItems = [
-    { title: 'home', path: '/protected' },
-    { title: 'stats', path: '/protected/stats' },
-    { title: 'profile', path: '/protected/profile' },
+    { title: 'home', path: '/' },
+    { title: 'stats', path: '/stats' },
+    { title: 'profile', path: '/profile' },
   ];
 const guestMenuItems = [
     { title: 'about', path: '/' },
@@ -22,13 +22,13 @@ function NavBar() {
     const {isSignedIn} = useUser();
 
   return (
-    <Navbar position='sticky'  maxWidth='full' shouldHideOnScroll isBlurred>
+    <Navbar className='box-border p-2' position='sticky'  maxWidth='full' shouldHideOnScroll isBordered isBlurred={false}>
         <NavbarContent justify='start'>
             <NavbarBrand className='text-2xl font-bold'>
                 cine
             </NavbarBrand>
         </NavbarContent>
-        <NavbarContent justify='center' className='gap-8'>
+        <NavbarContent justify='center' className='hidden md:flex gap-8'>
         {isSignedIn ? (
           userMenuItems.map(item => (
             <NavbarItem key={item.title}>
@@ -60,7 +60,7 @@ function NavBar() {
                 </NavbarItem>
                 <NavbarItem>
                     <SignUpButton>
-                        <Button color='primary' variant='flat' size='md'>
+                        <Button color='primary' variant='ghost' size='md' className='text-foreground'>
                             Sign Up
                         </Button>
                     </SignUpButton>

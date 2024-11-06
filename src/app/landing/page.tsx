@@ -1,4 +1,3 @@
-import { SignInButton, SignUpButton } from '@clerk/clerk-react'
 import React from 'react'
 
 function Landing() {

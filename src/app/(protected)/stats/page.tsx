@@ -1,11 +1,12 @@
 import React from 'react'
 
-function Profile() {
+function Stats() {
   return (
     <div className='main-div'>
-        Profile
+      stats
     </div>
   )
 }
 
-export default Profile
+
+export default Stats
