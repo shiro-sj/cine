@@ -7,9 +7,9 @@ import { SignInButton, SignOutButton, SignUpButton, useUser } from '@clerk/nextj
 import {Button} from "@nextui-org/button";
 
 const userMenuItems = [
-    { title: 'home', path: '/' },
-    { title: 'stats', path: '/stats' },
-    { title: 'profile', path: '/profile' },
+    { title: 'home', path: '/protected' },
+    { title: 'stats', path: '/protected/stats' },
+    { title: 'profile', path: '/protected/profile' },
   ];
 const guestMenuItems = [
     { title: 'about', path: '/' },

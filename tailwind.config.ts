@@ -1,21 +1,40 @@
-import { nextui } from '@nextui-org/theme';
 import type { Config } from "tailwindcss";
+import { nextui } from "@nextui-org/react";
 
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/(protected)/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
+  theme: {
+    extend: {
+      colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+      },
+    },
+  },
   darkMode: "class",
-  plugins: [nextui(
-    {
+  plugins: [nextui({
+    prefix: "nextui", // prefix for themes variables
+      addCommonColors: false, // override common colors (e.g. "blue", "green", "pink").
+      defaultTheme: "dark", // default theme from the themes object
+      defaultExtendTheme: "dark", // default theme to extend on custom themes
+      layout: {}, // common layout tokens (applied to all themes)
       themes: {
-        "purple-dark": {
-          extend: "dark", // <- inherit default values from dark theme
-          colors: {
+        light: {
+          layout: {}, // light theme layout tokens
+          colors: {}, // light theme colors
+        },
+        dark: {
+          layout: {}, // dark theme layout tokens
+          colors: {}, // dark theme colors
+        },
+        "purple-dark":{
+          extend:"dark",
+          colors:{
             background: "#0D001A",
             foreground: "#ffffff",
             primary: {
@@ -34,7 +53,7 @@ const config: Config = {
             },
             focus: "#F182F6",
           },
-          layout: {
+          layout:{
             disabledOpacity: "0.3",
             radius: {
               small: "4px",
@@ -47,11 +66,10 @@ const config: Config = {
               large: "3px",
             },
           },
-        },
-      },
-    }
+        }, // ... custom themes
+      } 
+    },
+    
   )],
 };
-
 export default config;
-

@@ -63,5 +63,3 @@ model FriendRequests {
     receiverUserName  String
     createdAt         DateTime @default(now())
 }
-
-

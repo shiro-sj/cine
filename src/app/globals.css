@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* :root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
 /**********FONTS***********/
 @font-face {
   font-family: 'FormulaCondensedBold';
@@ -31,6 +43,8 @@
 
 body {
   font-family: InclusiveSans, Arial, Helvetica, sans-serif;
+  color: var(--foreground);
+  background: var(--background);
   @apply tracking-widest min-h-screen;
 }
 
@@ -40,7 +54,7 @@ main {
 
 .main-div {
   @apply flex-1 flex flex-col;
-}
+} 
 
 /*****************CONTAINERS************************/
 
@@ -50,39 +64,39 @@ main {
 
 .container-h{
   @apply flex flex-col flex-1 h-full w-full;
-}
+} 
 
-.container-md {
+ .container-md {
   @apply flex w-full md:h-[100vh] lg:h-[60vh] h-[150vh] mb-8 lg:mb-10;
 }
 
 .container-sm {
-  @apply md:h-[25vh] lg:h-[30vh] h-[20vh] mb-6 lg:mb-10;
-}
+  @apply md:h-[25vh] lg:h-[30vh] h-[20vh] mb-6 lg:mb-10; 
+} 
 
 .content-v{
-  @apply flex flex-col flex-1 h-full w-full
+  @apply flex flex-col flex-1 h-full w-full;
 }
 
 .content-h{
-  @apply flex flex-row flex-1 h-full w-full
+  @apply flex flex-row flex-1 h-full w-full;
 }
 
-.cl-rootBox{
-  @apply basis-3/4 h-full w-5/6 md:w-1/2 lg:w-3/5 flex justify-center items-center
+ .cl-rootBox{
+  @apply basis-3/4 h-full w-5/6 md:w-1/2 lg:w-3/5 flex justify-center items-center;
 }
 
 .cl-cardBox{
-  @apply flex-1 flex w-full h-full
+  @apply flex-1 flex w-full h-full;
 }
 
 .cl-card{
-  @apply flex basis-3/4
+  @apply flex basis-3/4;
 }
 
 .cl-footer{
-  @apply flex basis-1/4
-}
+  @apply flex basis-1/4;
+} 
 
 /*****************STATS***************************/
 
@@ -127,75 +141,3 @@ h2 {
 h3 {
   @apply text-lg md:text-xl lg:text-2xl;
 }
-
-.container-sm {
-  @apply md:h-[25vh] lg:h-[30vh] h-[20vh] mb-6 lg:mb-10; */
-/* } */
-
-/* .content-v{
-  @apply flex flex-col flex-1 h-full w-full;
-}
-
-.content-h{
-  @apply flex flex-row flex-1 h-full w-full;
-} */
-
-/* .cl-rootBox{
-  @apply basis-3/4 h-full w-5/6 md:w-1/2 lg:w-3/5 flex justify-center items-center;
-}
-
-.cl-cardBox{
-  @apply flex-1 flex w-full h-full;
-}
-
-.cl-card{
-  @apply flex basis-3/4;
-}
-
-.cl-footer{
-  @apply flex basis-1/4;
-} */
-
-/*****************STATS***************************/
-
-/* .stats-grid {
-  @apply flex-1 flex flex-col md:grid md:grid-cols-2 lg:grid lg:grid-cols-4 gap-4;
-}
-
-.stats-card {
-  @apply rounded-xl bg-primary relative box-border p-6 basis-1/6 flex flex-col-reverse justify-start items-start transition transform duration-300 ease-in-out hover:scale-105;
-}
-
-.stats-card-md {
-  @apply rounded-xl bg-primary relative box-border p-6 basis-1/6 lg:row-span-2 flex flex-col-reverse justify-start items-start transition transform duration-300 ease-in-out hover:scale-105;
-}
-
-.stats-card-lg {
-  @apply rounded-xl bg-primary-900 relative box-border p-6 basis-1/2 md:row-span-2 lg:row-span-3 justify-center items-center flex transition transform duration-300 ease-in-out hover:scale-105;
-}
-
-.stats-card-long {
-  @apply rounded-xl bg-primary relative box-border p-6 basis-1/6 lg:col-span-2 flex flex-col-reverse justify-start items-start transition transform duration-300 ease-in-out hover:scale-105;
-}
-
-.stats-card-profile {
-  @apply rounded-xl bg-primary-900 box-border p-6 basis-1/3 md:row-span-3 md:flex-col lg:row-span-2 lg:flex-col flex flex-row justify-center items-center transition transform duration-300 ease-in-out hover:scale-105;
-}
-
-.stats-icon {
-  @apply absolute top-3 right-4 text-5xl;
-} */
-
-/*****************************FONTS*****************************/
-
-/* h1 {
-  @apply text-4xl;
-}
-
-h2 {
-  @apply text-2xl md:text-4xl lg:text-4xl;
-}
-
-h3 {
-  @apply text-lg md:text-xl lg:text-2xl;
-} */
