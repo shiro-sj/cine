@@ -9,6 +9,7 @@ import {Button} from "@nextui-org/button";
 const userMenuItems = [
     { title: 'home', path: '/protected' },
     { title: 'stats', path: '/protected/stats' },
+    { title: 'playground', path: '/protected/playground'},
     { title: 'profile', path: '/protected/profile' },
   ];
 const guestMenuItems = [

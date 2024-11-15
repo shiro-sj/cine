@@ -40,6 +40,11 @@
   font-family: 'InclusiveItalic';
   src: url('/fonts/InclusiveSans-Italic.woff2'),
 }
+@font-face {
+  font-family: 'AuxMono';
+  src: url('/fonts/Aux Mono.otf'),
+       url('/fonts/Aux Mono.ttf')
+}
 
 body {
   font-family: InclusiveSans, Arial, Helvetica, sans-serif;
@@ -66,20 +71,29 @@ main {
   @apply flex flex-col flex-1 h-full w-full;
 } 
 
- .container-md {
+ .container-lg {
   @apply flex w-full md:h-[100vh] lg:h-[60vh] h-[150vh] mb-8 lg:mb-10;
+}
+
+.container-md {
+  @apply flex w-full md:h-[60vh] lg:h-[50vh] h-[70vh] mb-8 lg:mb-10;
 }
 
 .container-sm {
   @apply md:h-[25vh] lg:h-[30vh] h-[20vh] mb-6 lg:mb-10; 
 } 
 
+.container-xs{
+  @apply md:h-[8vh] lg:h-[10vh] h-[5vh] mb-6 lg:mb-10;
+
+}
+
 .content-v{
   @apply flex flex-col flex-1 h-full w-full;
 }
 
 .content-h{
-  @apply flex flex-row flex-1 h-full w-full;
+  @apply flex flex-row flex-1 h-full w-full justify-center items-center;
 }
 
  .cl-rootBox{
@@ -98,36 +112,58 @@ main {
   @apply flex basis-1/4;
 } 
 
-/*****************STATS***************************/
+/***************************STATS***************************/
 
 .stats-grid {
   @apply flex-1 flex flex-col md:grid md:grid-cols-2 lg:grid lg:grid-cols-4 gap-4;
 }
 
 .stats-card {
-  @apply rounded-xl bg-primary relative box-border p-6 basis-1/6 flex flex-col-reverse justify-start items-start transition transform duration-300 ease-in-out hover:scale-105;
+  @apply rounded-md bg-content4 relative box-border p-6 basis-1/6 flex flex-col-reverse justify-start items-start transition transform duration-300 ease-in-out hover:scale-105;
 }
 
 .stats-card-md {
-  @apply rounded-xl bg-primary relative box-border p-6 basis-1/6 lg:row-span-2 flex flex-col-reverse justify-start items-start transition transform duration-300 ease-in-out hover:scale-105;
+  @apply rounded-md bg-content2 relative box-border p-6 basis-1/6 lg:row-span-2 flex flex-col-reverse justify-start items-start transition transform duration-300 ease-in-out hover:scale-105;
 }
 
 .stats-card-lg {
-  @apply rounded-xl bg-primary-900 relative box-border p-6 basis-1/2 md:row-span-2 lg:row-span-3 justify-center items-center flex transition transform duration-300 ease-in-out hover:scale-105;
+  @apply rounded-md bg-content1 relative box-border p-6 basis-1/2 md:row-span-2 lg:row-span-3 justify-center items-center flex transition transform duration-300 ease-in-out hover:scale-105;
 }
 
 .stats-card-long {
-  @apply rounded-xl bg-primary relative box-border p-6 basis-1/6 lg:col-span-2 flex flex-col-reverse justify-start items-start transition transform duration-300 ease-in-out hover:scale-105;
+  @apply rounded-md bg-content3 relative box-border p-6 basis-1/6 lg:col-span-2 flex flex-col-reverse justify-start items-start transition transform duration-300 ease-in-out hover:scale-105;
 }
 
 .stats-card-profile {
-  @apply rounded-xl bg-primary-900 box-border p-6 basis-1/3 md:row-span-3 md:flex-col lg:row-span-2 lg:flex-col flex flex-row justify-center items-center transition transform duration-300 ease-in-out hover:scale-105;
+  @apply rounded-md bg-primary-50 box-border p-6 basis-1/3 md:row-span-3 md:flex-col lg:row-span-2 lg:flex-col flex flex-row justify-center items-center transition transform duration-300 ease-in-out hover:scale-105;
 }
 
 .stats-icon {
   @apply absolute top-3 right-4 text-5xl;
 }
 
+.activity-icon{
+  @apply text-2xl justify-center items-center flex
+}
+
+.activity-profile{
+  @apply border-2 border-double border-spacing-2 border-primary-50 rounded-lg flex flex-col flex-1 h-full w-full box-border p-8 justify-evenly items-center 
+}
+
+.activity-container{
+  @apply flex-1 flex flex-col w-full h-full 
+}
+.activity-card{
+  @apply flex flex-1 flex-row w-full h-full box-border p-4 justify-center items-center 
+}
+
+.activity-img{
+  @apply relative flex-1 w-full h-full flex justify-start items-center
+}
+
+.activity-content{
+  @apply flex-1 flex justify-start items-center flex-col
+}
 /*****************************FONTS*****************************/
 
 h1 {

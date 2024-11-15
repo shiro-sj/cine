@@ -1,13 +1,10 @@
 import React from 'react'
-import Link from 'next/link'
 import { Button} from '@nextui-org/button'
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 import HourglassBottomRoundedIcon from '@mui/icons-material/HourglassBottomRounded';
-import { Avatar } from '@nextui-org/avatar'
-import { AvatarImageProps } from '@/lib/interfaces';
 
-function StatGrid({avatarSrc}: AvatarImageProps) {
+function StatGrid() {
   return (
     <div className='stats-grid'>
       <div className='stats-card-lg'>
@@ -28,9 +25,6 @@ function StatGrid({avatarSrc}: AvatarImageProps) {
         <h3>total minutes</h3>
       </div>
       <div className='stats-card-profile'>
-        <Link href='/profile' className='flex-1 flex justify-center items-center'>
-          <Avatar src={avatarSrc} className='h-32 w-32' isBordered color='primary'/>
-        </Link>
         <div className='flex-1 h-full w-full flex justify-center items-center'>
           <Button variant='light' className='h-full w-full'>
             <h3>share my stats</h3>
