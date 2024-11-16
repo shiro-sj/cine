@@ -1,17 +1,20 @@
 'use client'
-import { useUser, UserButton } from '@clerk/nextjs';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Image from 'next/image'
+import { useUser} from '@clerk/nextjs';
 
-export default function Profile() {
-  const { isSignedIn, user } = useUser();
-  const [profileData, setProfileData] = useState(null);
+export default function Profile({params}) {
+
+    const [profileData, setProfileData] = useState(null);
+    const { username } = params;
+    const { isSignedIn } = useUser(); // Clerk.js integration
+
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`/api/user?username=${user?.username}`);
+        const response = await axios.get(`/api/user?username=${username}`);
         const data = response.data;
 
         if (response.status === 200) {
@@ -22,10 +25,10 @@ export default function Profile() {
       }
     };
 
-    if (user) {
+    if (username) {
       fetchProfile();
     }
-  }, [user]);
+  }, [username]);
 
   if (!isSignedIn) {
     return <p>Please sign in to view your profile.</p>;
@@ -33,8 +36,7 @@ export default function Profile() {
 
   return (
     <div>
-      <h2>Welcome, {user.username}</h2>
-      <UserButton/>
+      <h2>{username}</h2>
       <Image
         src={profileData?.imageUrl} 
         alt="User's profile picture" 

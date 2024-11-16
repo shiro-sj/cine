@@ -18,9 +18,9 @@ export default function Page() {
 
     // const fetchTopMovie = async () => {
     //     try {
-    //         const response = await axios.get('/api/prisma/topStats');
-    //         setMovieTitle(response.data.topMovie.title);
-    //         setWatchTime(response.data.topMovie.watchedAt);
+    //         const response = await axios.get('/api/stats/top');
+    //         setMovieTitle(response.topWatched,title);
+    //         setWatchTime(response.;
     //     } catch (error) {
     //         console.error('Error fetching watch history:', error);
     //     }
