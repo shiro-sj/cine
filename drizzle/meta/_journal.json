@@ -78,6 +78,27 @@
       "when": 1731700407777,
       "tag": "0010_low_kinsey_walden",
       "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1731727243125,
+      "tag": "0011_lucky_gunslinger",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1731727313229,
+      "tag": "0012_bizarre_scrambler",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1731727845282,
+      "tag": "0013_groovy_wiccan",
+      "breakpoints": true
     }
   ]
 }

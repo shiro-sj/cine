@@ -40,9 +40,8 @@ function RecentsBar() {
         }
     };
 
-    // Format date as "Dec 12, 2023"
     const formatDate = (dateString: string) => {
-        const date = new Date(dateString); // Convert to Date object
+        const date = new Date(dateString);
         return date.toLocaleDateString('en-US', {
             weekday: 'long',
             year: 'numeric',
@@ -51,7 +50,6 @@ function RecentsBar() {
         });
     };
 
-    // Fetch posters when recents data is available
     useEffect(() => {
         recents.forEach((entry) => {
             if (entry.tmdbId && !posters[entry.tmdbId]) {
@@ -59,7 +57,7 @@ function RecentsBar() {
                 getPoster(entry.tmdbId, entry.type);
             }
         });
-    }, [recents, posters]); // Trigger whenever recents or posters changes
+    }, [recents, posters]);
 
     return (
         <div>

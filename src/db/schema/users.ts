@@ -71,8 +71,10 @@ export const genresRelations = relations(genres, ({many})=>({
 /************************JOIN TABLE******************************/
 
 export const entriesOnGenre = pgTable('entries_genre', {
+    id: serial().unique(),
     entryId: integer().notNull().references(()=> entries.id),
     genreId: integer().notNull().references(()=> genres.id),
+    userId: integer().notNull().references(() => users.id),
 },
 (t)=>({
     pk: primaryKey({columns: [t.entryId, t.genreId] }),
