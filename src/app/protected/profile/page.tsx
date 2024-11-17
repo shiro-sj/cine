@@ -3,6 +3,7 @@ import { useUser, UserButton } from '@clerk/nextjs';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Image from 'next/image'
+import { profile } from 'console';
 
 export default function Profile() {
   const { isSignedIn, user } = useUser();
@@ -11,35 +12,39 @@ export default function Profile() {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      console.log('fetching')
+      console.log('fetching profile');
       try {
         const response = await axios.get(`/api/user?username=${user?.username}`);
         const data = response.data;
 
         if (response.status === 200) {
-          setProfileData(data.currentUser);
+          console.log(response)
+          setProfileData(data);
+
+          console.log(profileData)
         }
       } catch (e) {
         console.log(e);
       }
     };
 
-    const fetchFriends = async() =>{
-      console.log('fetching')
-      try{
-        const response = await axios.get(`/api/friends?username=${user?.username}`)
+    const fetchFriends = async () => {
+      console.log('fetching friends');
+      try {
+        const response = await axios.get(`/api/friends?username=${user?.username}`);
         const data = response.data;
-        
-        if(response.status === 200){
-          setFriendData(data)
+
+        if (response.status === 200) {
+          setFriendData(data);
         }
-      }catch(e){
-        console.log(e)
+      } catch (e) {
+        console.log(e);
       }
-    }
+    };
 
     if (user) {
       fetchProfile();
+      // fetchFriends(); // Make sure to call this here
     }
   }, [user]);
 
@@ -50,12 +55,21 @@ export default function Profile() {
   return (
     <div>
       <h2>Welcome, {user.username}</h2>
-      <UserButton/>
-      <Image
-        src={profileData?.imageUrl} 
-        alt="User's profile picture" 
-        className="w-24 h-24 rounded-full object-cover"
-      />
+      {profileData?.imageUrl && (
+  <img
+    src={profileData.imageUrl}  // Corrected this line
+    alt="User's profile picture"
+    className="w-24 h-24 rounded-full object-cover"
+    width={96}
+    height={96}
+  />
+)}
+      <h3>Your Friends:</h3>
+      {/* <ul>
+        {friendData.map((friend, index) => (
+          <li key={index}>{friend.username}</li>
+        ))}
+      </ul> */}
     </div>
   );
 };
