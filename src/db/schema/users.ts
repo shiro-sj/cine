@@ -41,6 +41,7 @@ export const entries = pgTable("entries", {
     userId: integer().notNull().references(()=>users.id),
     genres: integer().array(), //populated from tmdb
     type: varchar({length: 256}),
+    runtime: integer(),
 
     review: text(),
     rating: decimal(),

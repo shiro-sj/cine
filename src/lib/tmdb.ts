@@ -87,3 +87,66 @@ export async function getGenres(){
         console.log('error resetting genres.')
     }
 }
+
+export async function findMovie(findUrl:string, id:string|null){
+  try{
+      const response = await axios.get(`${findUrl}/movie/${id}`, {
+      params:{
+          api_key: TMDB_API_KEY
+      }
+      })
+      return response.data;
+  
+  }catch(e){
+      console.log(`Error fetching movie data for ${id}`, e)
+  }
+};
+
+
+export async function findSeries(findUrl:String, id:string |null){
+  try{
+      const response = await axios.get(`${findUrl}/tv/${id}`, {
+      params:{
+          api_key: TMDB_API_KEY
+      }
+      })
+      return response.data;
+  
+  }catch(e){
+      console.log(`Error finding series data for ${id}`, e)
+  }
+  
+  };
+
+  export function jaccardCompare(str1: string, str2: string){
+    let string1 = str1.toLowerCase().split(/\W+/)
+    let string2 = str2.toLowerCase().split(/\W+/)
+    let intersection = new Set([...string1].filter(x=>string2.includes(x)));
+    let union = new Set([...string1, ...string2]);
+
+    let similarity = intersection.size / union.size;
+
+    return similarity;
+}
+
+  export async function findEpisode(findUrl:String, id:string | null, episodeName:string, season: string|null){
+    try {
+        const response = await axios.get(`${findUrl}/tv/${id}/season/${season}`,{
+        params:{
+            api_key: TMDB_API_KEY
+        }
+        })
+    
+        for (let episodeNumber in response.data.episodes){
+        let name = response.data.episodes[episodeNumber].name
+        const index = jaccardCompare(name, episodeName);
+        if (index>=0.5){
+            return response.data.episodes[episodeNumber];
+        }
+        }
+    
+    } catch (error) {
+        console.log(`Error finding ${id} season: ${season} : ${episodeName} `)
+        
+    }
+    }

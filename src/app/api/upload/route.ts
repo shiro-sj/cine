@@ -1,6 +1,6 @@
 import { entries, entriesOnGenre, genres, users } from "@/db/schema/users";
 import { chunkArray } from "@/lib/helpers";
-import { searchMovie, searchSeries } from "@/lib/tmdb";
+import { findEpisode, findMovie, findSeries, searchMovie, searchSeries } from "@/lib/tmdb";
 import { db } from "@/db";
 import { eq, and } from "drizzle-orm";
 import { currentUser } from "@clerk/nextjs/server";
@@ -21,6 +21,7 @@ export async function POST(request: Request) {
             try {
                 const data = await request.json();
                 const searchUrl = 'https://api.themoviedb.org/3/search';
+                const findUrl = 'https://api.themoviedb.org/3'
                 
             
                 if (!data || data.length === 0) {
@@ -55,29 +56,52 @@ export async function POST(request: Request) {
                           const genresList: any[]=[];
                           let season;
                           let episode;
+                          let details;
+                          let runtime;
+                          let seasonNumber;
+                          let episodeDetails;
+
           
                           switch (parts.length){
                               case 2:
-                                  season = null;
-                                  episode = parts[1]
+                                  details = await findSeries(findUrl, series.id.toString())
+                                  episode = parts[1];
+                                  episodeDetails = await findEpisode(findUrl, series.id.toString(), episode, '1')
+                                  if (episodeDetails){
+                                    runtime = episodeDetails.runtime
+                                    season = null;
+                                  } else{
+                                    episodeDetails = await findEpisode(findUrl, series.id.toString(), episode, 'Specials')
+                                    runtime = episodeDetails.runtime
+                                    season = null;
+                                  }
+                                 
                                   break;
                               case 3:
                                   season = parts[1];
+                                  seasonNumber = parts[1].trim().match(/\d+/)[0];
                                   episode = parts[2];
+                                  episodeDetails = await findEpisode(findUrl, series.id.toString(), episode, seasonNumber)
+                                  if (episodeDetails){
+                                    runtime = episodeDetails.runtime
+                                  } else{
+                                    episodeDetails = await findEpisode(findUrl, series.id.toString(), episode, 'Specials')
+                                    runtime = episodeDetails.runtime
+                                  }
                                   break;
                               case 4:
                                   season = parts[1];
-                                  episode = parts[2] + ':' + parts[3];;
-          
+                                  episode = parts[2] + ':' + parts[3];
+                                  runtime = null;
+                                  break;
                           }
-                          
-                          
+
                           for (let genre of series.genres){
                               const result = await db.select().from(genres).where(and(eq(genres.genreID, genre), eq(genres.type, type)))
                               genresList.push(result[0].id)
                           }
           
-                          const entry = {title: showTitle, date: date, userId: dbUserId, genres: genresList, seen: true, tmdbId: series.id, type: type, season: season, episode: episode}
+                          const entry = {title: showTitle, date: date, userId: dbUserId, genres: genresList, seen: true, tmdbId: series.id, type: type, season: season, episode: episode, runtime: runtime}
           
                           try{
                               const [logged] = await db.insert(entries).values(entry).returning()
@@ -172,6 +196,7 @@ export async function POST(request: Request) {
                         
                       }
                     } catch (error) {
+                        
                       return { type: null, title: title, id: null, date: date };
                     }
                   } else {
@@ -179,18 +204,21 @@ export async function POST(request: Request) {
                     try {
                       let type;
                       const movie = await searchMovie(searchUrl, title);
+                      
                       if (movie != null) {
-          
                           type = 'movie'
                           const genresList: number[]=[];
-                          
+                          const details = await findMovie(findUrl, movie.id.toString());
+                          const runtime = details.runtime
                           
                           for (let genre of movie.genres){
                               const result = await db.select().from(genres).where(and(eq(genres.genreID, genre), eq(genres.type, type)))
                               genresList.push(result[0].id)
                           }
+
+
           
-                      const entry = {title: title, date: date, userId: dbUserId, genres: genresList, seen: true, tmdbId: movie.id, type: type }
+                      const entry = {title: title, date: date, userId: dbUserId, genres: genresList, seen: true, tmdbId: movie.id, type: type, runtime: runtime  }
           
                       try{
                           const [logged] = await db.insert(entries).values(entry).returning()
