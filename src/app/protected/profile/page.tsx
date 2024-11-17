@@ -7,6 +7,7 @@ import Image from 'next/image'
 export default function Profile() {
   const { isSignedIn, user } = useUser();
   const [profileData, setProfileData] = useState(null);
+  const [friendData, setFriendData] = useState(null);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -21,6 +22,19 @@ export default function Profile() {
         console.log(e);
       }
     };
+
+    const fetchFriends = async() =>{
+      try{
+        const response = await axios.get(`/api/friends?username=${user?.username}`)
+        const data = response.data;
+        
+        if(response.status === 200){
+          setFriendData(data)
+        }
+      }catch(e){
+        console.log(e)
+      }
+    }
 
     if (user) {
       fetchProfile();

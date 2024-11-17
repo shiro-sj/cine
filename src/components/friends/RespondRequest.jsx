@@ -3,10 +3,14 @@ export default function RespondRequest({ senderUsername, receiverUserName }) {
 
       try {
         //accept the friend request
-        const response = await fetch(`/api/friends/respondRequest`, {
+        const response = await fetch(`/api/friends`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ requestSender: senderUsername, requestResponder: receiverUserName, action: 'ACCEPT' }),
+          body: JSON.stringify({ 
+            action: 'acceptRequest',
+            requestSender: senderUsername, 
+            requestResponder: receiverUserName, 
+             }),
         });
         
         if (response.ok) {
@@ -24,10 +28,13 @@ export default function RespondRequest({ senderUsername, receiverUserName }) {
     const handleReject = async () => {
       console.log('rejecting');
       try {
-        const response = await fetch(`/api/friends/respondRequest`, {
+        const response = await fetch(`/api/friends`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ requestSender: senderUsername, requestResponder: receiverUserName, action: 'REJECT' }),
+          body: JSON.stringify({ 
+            action: 'declineRequest',
+            requestSender: senderUsername, 
+            requestResponder: receiverUserName }),
         });
         if (response.ok) {
           console.log('Friend request rejected');

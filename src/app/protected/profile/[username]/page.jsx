@@ -29,7 +29,7 @@ export default function Profile({params}) {
       fetchProfile();
     }
   }, [username]);
-
+  
   if (!isSignedIn) {
     return <p>Please sign in to view your profile.</p>;
   }

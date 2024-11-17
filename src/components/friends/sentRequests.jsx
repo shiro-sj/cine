@@ -6,7 +6,11 @@ export default function SentFriendRequest({ request }) {
             const response = await fetch(`/api/friends/respondRequest`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ requestSender: request.senderUserName , requestResponder: request.receiverUserName, action: 'REJECT' }),
+                body: JSON.stringify({ 
+                    action: 'deleteRequest' ,
+                    requestSender: request.senderUserName, 
+                    requestResponder: request.receiverUserName
+                    }),
                 });
             if (response.ok) {
                 console.log('Friend request rejected');

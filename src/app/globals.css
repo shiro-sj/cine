@@ -46,6 +46,13 @@
        url('/fonts/Aux Mono.ttf')
 }
 
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/public/fonts/RobotoCondensed-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   font-family: InclusiveSans, Arial, Helvetica, sans-serif;
   color: var(--foreground);
@@ -164,6 +171,13 @@ main {
 .activity-content{
   @apply flex-1 flex justify-start items-center flex-col
 }
+
+/*****************************MovieTicket*****************************/
+
+/* .mt-text {
+  @apply font-family: 'Roboto', sans-serif;
+} */
+
 /*****************************FONTS*****************************/
 
 h1 {

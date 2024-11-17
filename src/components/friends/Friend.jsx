@@ -1,11 +1,17 @@
 export default function Friends({ friend, isUser }){
+//friend : friend object
+//isUser : bool
 
     const handleUnfriend = async () =>{
         try{
-            const response = await fetch(`/api/friends/deleteFriend`, {
+            const response = await fetch(`/api/friends`, {
                 method: "POST",
                 headers: { 'Content-Type' : 'application/json' },
-                body: JSON.stringify({user: friend.username , friend : friend.friendname}),
+                body: JSON.stringify({
+                    action: 'deleteFriend',
+                    username: friend.username, 
+                    friendUsername : friend.friendname
+                }),
               });
             if(response === 200){
                 console.log(`${friend.friendname} unfriended`)
