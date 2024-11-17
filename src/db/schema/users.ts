@@ -26,9 +26,35 @@ export const users = pgTable("users",{
     embedding: vector('embedding', {dimensions:1536}), //This will be from a called function
 })
 
+
 export const usersRelations = relations(users, ({many})=>({
     entries: many(entries),
+    sentFriendRequests: many(friends),
+    receivedFriendRequests: many(friends),
 }))
+
+export const friends = pgTable("friends", {
+    id: serial().unique(),
+    userId: integer().notNull().references(() => users.id),  // first user in the friendship
+    friendId: integer().notNull().references(() => users.id),  // second user in the friendship
+    status: varchar({ length: 256 }),  // 'pending', 'confirmed'
+    createdAt: timestamp().defaultNow(),
+    updatedAt: timestamp().defaultNow(),
+}, (t) => ({
+    pk: primaryKey({columns: [t.userId, t.friendId]}),
+}));
+
+
+export const friendsRelations = relations(friends, ({ one, many }) => ({
+    user: one(users, {
+        fields: [friends.userId],
+        references: [users.id],
+    }),
+    friend: one(users, {
+        fields: [friends.friendId],
+        references: [users.id],
+    }),
+}));
 
 
 export const entries = pgTable("entries", {
