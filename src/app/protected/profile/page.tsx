@@ -11,6 +11,7 @@ export default function Profile() {
 
   useEffect(() => {
     const fetchProfile = async () => {
+      console.log('fetching')
       try {
         const response = await axios.get(`/api/user?username=${user?.username}`);
         const data = response.data;
@@ -24,6 +25,7 @@ export default function Profile() {
     };
 
     const fetchFriends = async() =>{
+      console.log('fetching')
       try{
         const response = await axios.get(`/api/friends?username=${user?.username}`)
         const data = response.data;

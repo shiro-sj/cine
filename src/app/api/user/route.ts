@@ -13,7 +13,7 @@ export async function GET(request: Request){
         }
         else{
             console.log('fetching', username)
-            const data = await db.select().from(users).where(eq(users.username, username))
+            const data = await db.select().from(users).where(eq(users.username, 'kim_chaewon'))
 
             if (data.length === 0 ){
                 return new Response('user not found', {status:404})
@@ -23,6 +23,7 @@ export async function GET(request: Request){
         }
 
     }catch (error) {
+        console.log('???')
         console.error('Error fetching user:', error);
         return new Response(`Error fetching user data: ${error.message}`, { status: 500 });
     }

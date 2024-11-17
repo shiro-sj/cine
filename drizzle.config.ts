@@ -5,5 +5,5 @@ export default defineConfig({
     schema: './src/db/schema',
     dbCredentials: {
         url: process.env.POSTGRES_URL!,
-      },
+      },
 })
