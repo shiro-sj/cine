@@ -94,20 +94,21 @@ function FriendsList() {
         <div>
             Friends:
             <ul>
-            {friends.map((friend)=><li key={friend.id} className='flex flex-row justify-start gap-20 p-5'>
-                <img src={friend.senderImage} className='w-20 h-20 rounded-full'/>
-                <div className='flex flex-col gap-4'>
-                    <span>{friend.senderUsername}</span>
-                    <div className='flex flex-row gap-5'>
-                        <Link href={`/protected/profile/${friend.senderUsername}`}>
-                            <Button>View Profile</Button>
-                        </Link>
-                        
-                        <Button onClick={()=>{unfriendUser(friend.id)}}>Unfriend</Button>
+            {friends.map((friend, index) => (
+                <li key={`${friend.id}-${index}`} className="flex flex-row justify-start gap-20 p-5">
+                    <img src={friend.profileImage} className="w-20 h-20 rounded-full" alt={`${friend.senderUsername}'s profile`} />
+                    <div className="flex flex-col gap-4">
+                        <span>{friend.senderUsername}</span>
+                        <div className="flex flex-row gap-5">
+                            <Link href={`/protected/profile/${friend.senderUsername}`}>
+                                <Button>View Profile</Button>
+                            </Link>
+                            <Button onClick={() => { unfriendUser(friend.id); }}>Unfriend</Button>
+                        </div>
                     </div>
-                    
-                </div>
-            </li>)}
+                </li>
+            ))}
+
             </ul>
         </div>
 
