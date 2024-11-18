@@ -9,8 +9,10 @@ export async function GET(){
         
     try{
         const user = await currentUser();
+        const setback = 1;
 
         if (user){
+            
             const dbUser = await db.select().from(users).where(eq(users.clerkId, user.id))
             const topWatched = await db.select({ title: entries.title, entriesCount: countDistinct(entries.id) }).from(entries).leftJoin(users, eq(entries.userId, dbUser[0].id)).groupBy(entries.tmdbId, entries.title).orderBy(desc(count(entries.id)));
             const topGenres = await db.select({genreId: entriesOnGenre.genreId, name: genres.name, count: count(entriesOnGenre.id) }).from(entriesOnGenre).leftJoin(genres, eq(entriesOnGenre.genreId, genres.id)).where(eq(entriesOnGenre.userId, dbUser[0].id)).groupBy(entriesOnGenre.genreId, genres.name).orderBy(desc(count(entriesOnGenre.id)));

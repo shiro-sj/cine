@@ -7,7 +7,7 @@ import { NextResponse } from 'next/server';
 export async function GET(){
     try{
         const user = await currentUser()
-        const limit = 10;
+        const limit = 7;
         const setback = 1;
 
         if(user){

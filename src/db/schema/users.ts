@@ -29,32 +29,30 @@ export const users = pgTable("users",{
 
 export const usersRelations = relations(users, ({many})=>({
     entries: many(entries),
-    sentFriendRequests: many(friends),
-    receivedFriendRequests: many(friends),
 }))
 
-export const friends = pgTable("friends", {
+export const friendsOfUser = pgTable("friendsOfUser", {
     id: serial().unique(),
-    userId: integer().notNull().references(() => users.id),  // first user in the friendship
-    friendId: integer().notNull().references(() => users.id),  // second user in the friendship
-    status: varchar({ length: 256 }),  // 'pending', 'confirmed'
-    createdAt: timestamp().defaultNow(),
-    updatedAt: timestamp().defaultNow(),
-}, (t) => ({
-    pk: primaryKey({columns: [t.userId, t.friendId]}),
-}));
+    senderId: integer('senderId').notNull().references(()=>users.id),
+    senderImage: varchar({length:256}),
+    senderUsername: varchar({length: 256}),
+    receiverId: integer('receiverId').notNull().references(()=>users.id),
+    status: varchar({length: 256}),
+}, (t)=>({
+    pk: primaryKey({columns: [t.senderId, t.receiverId]})
+}))
 
+export const friendsOfUserRelations = relations(friendsOfUser, ({one})=>({
+    sender: one(users, {
+        fields: [friendsOfUser.senderId],
+        references: [users.id]
+    }),
+    receiver: one(users, {
+        fields: [friendsOfUser.receiverId],
+        references: [users.id]
+    })
+}))
 
-export const friendsRelations = relations(friends, ({ one, many }) => ({
-    user: one(users, {
-        fields: [friends.userId],
-        references: [users.id],
-    }),
-    friend: one(users, {
-        fields: [friends.friendId],
-        references: [users.id],
-    }),
-}));
 
 
 export const entries = pgTable("entries", {
@@ -80,7 +78,7 @@ export const entriesRelations = relations(entries, ({one, many})=>({
         references: [users.id],
     }),
 
-    entriesOnGenre: many(entriesOnGenre)
+    entriesOnGenre: many(entriesOnGenre),
 
 }))
 
@@ -112,9 +110,10 @@ export const entriesOnGenreRelations = relations(entriesOnGenre, ({one})=>({
     entries: one(entries,{
         fields: [entriesOnGenre.entryId], 
         references: [entries.id]}),
+
     genres: one(genres, {
         fields: [entriesOnGenre.genreId],
-        references: [genres.id]
+        references: [genres.id],
     }),
 }))
 

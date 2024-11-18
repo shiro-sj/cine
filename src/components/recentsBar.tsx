@@ -1,10 +1,11 @@
 'use client'
+import { Table, Avatar, TableHeader, TableBody, TableCell, TableColumn, TableRow, Image} from '@nextui-org/react'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
 function RecentsBar() {
     const [recents, setRecents] = useState<any[]>([]);
-    const [posters, setPosters] = useState<any>({}); 
+    const [posters, setPosters] = useState<any>({});
 
     useEffect(() => {
         const fetchRecents = async () => {
@@ -27,9 +28,8 @@ function RecentsBar() {
                 },
             });
             if (response.data.poster_path) {
-                
                 const posterUrl = `https://image.tmdb.org/t/p/w500${response.data.poster_path}`;
-                
+
                 setPosters((prevPosters: any) => ({
                     ...prevPosters,
                     [id]: posterUrl,
@@ -53,41 +53,43 @@ function RecentsBar() {
     useEffect(() => {
         recents.forEach((entry) => {
             if (entry.tmdbId && !posters[entry.tmdbId]) {
-                // Fetch poster if not already fetched
                 getPoster(entry.tmdbId, entry.type);
             }
         });
     }, [recents, posters]);
 
     return (
-        <div>
-            <h3>Recently Watched:</h3>
-            <ul>
-                {recents.map((entry) => (
-                    <li key={entry.id}>
-                        <div className='flex flex-row gap-10 items-center'>
-                            <div>
+        <div className="p-4 flex w-full h-full flex-col">
+            <h3 className="text-xl font-semibold mb-4">Recently Watched:</h3>
+            <Table aria-label="Recently Watched" className='flex-1 flex overflow-scroll scrollbar-hide rounded-lg' color='secondary'>
+                <TableHeader className='flex overflow-scroll scrollbar-hide'>
+                    <TableColumn>Poster</TableColumn>
+                    <TableColumn>Title</TableColumn>
+                    <TableColumn>Season</TableColumn>
+                    <TableColumn>Episode</TableColumn>
+                    <TableColumn>Date Watched</TableColumn>
+                </TableHeader>
+                <TableBody className='flex overflow-scroll scrollbar-hide'>
+                    {recents.map((entry) => (
+                        <TableRow key={entry.id} className="transition-colors duration-200 hover:bg-gray-100">
+                            <TableCell>
                                 {posters[entry.tmdbId] && (
-                                    <img
+                                    <Image
                                         src={posters[entry.tmdbId]}
                                         alt={`${entry.title} poster`}
-                                        style={{ width: '100px', height: 'auto' }}
-                                        className='object-contain'
+                                        sizes="lg"
+                                        className="w-16 h-auto"
                                     />
                                 )}
-                            </div>
-                            <div className='flex flex-col'>
-                               <div>
-                                {entry.title} : {entry.season} : {entry.episode} 
-                                </div> 
-                                <div>
-                                {formatDate(entry.date.split('T')[0])}
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                ))}
-            </ul>
+                            </TableCell>
+                            <TableCell>{entry.title}</TableCell>
+                            <TableCell>{entry.season}</TableCell>
+                            <TableCell>{entry.episode}</TableCell>
+                            <TableCell>{formatDate(entry.date.split('T')[0])}</TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
         </div>
     );
 }

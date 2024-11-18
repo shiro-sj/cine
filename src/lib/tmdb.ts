@@ -147,6 +147,5 @@ export async function findSeries(findUrl:String, id:string |null){
     
     } catch (error) {
         console.log(`Error finding ${id} season: ${season} : ${episodeName} `)
-        
     }
     }

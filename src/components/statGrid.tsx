@@ -7,8 +7,8 @@ import HourglassBottomRoundedIcon from '@mui/icons-material/HourglassBottomRound
 import axios from 'axios'
 
 function StatGrid() {
-  const [stats, setStats] = useState<any>(null);  // Initialize as null
-  const [loading, setLoading] = useState(true);    // Loading state is true by default
+  const [stats, setStats] = useState<any>(null);  
+  const [loading, setLoading] = useState(true);    
 
   useEffect(() => {
     const fetchStats = async () => {
