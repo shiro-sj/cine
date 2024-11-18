@@ -102,10 +102,13 @@ export default function Page() {
 
     return (
         <div className='main-div'>
+          <div className="w-full  flex justify-center">
+          <h1 className="p-5 text-5xl">Playground</h1>
+
+          </div>
+          
           <div className="content-h">
           <div className='flex flex-col justify-center items-center flex-1'>
-                <h1 className="p-5">Playground</h1>
-
                 <div ref={svgRef}>
                     {movieStyle && (
                         <MovieTicket movieTitle={movieTitle} watchedDate={watchedTime} />

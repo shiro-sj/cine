@@ -1,3 +1,4 @@
+import StatGrid from '@/components/statGrid'
 import TopWatchedGenresChart from '@/components/topGenresChart'
 import TopWatchedShowsChart from '@/components/topWatchedShowChart'
 import WatchStatsChart from '@/components/watchStats'
@@ -14,6 +15,9 @@ function stats() {
           <TopWatchedShowsChart/>
           <TopWatchedGenresChart/>
         </div>
+      </div>
+      <div className='container-lg'>
+        <StatGrid/>
       </div>
     </div>
   )

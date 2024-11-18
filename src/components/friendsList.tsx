@@ -103,7 +103,7 @@ function FriendsList() {
                             <Link href={`/protected/profile/${friend.username}`}>
                                 <Button>View Profile</Button>
                             </Link>
-                            <Button onClick={() => { unfriendUser(friend.id); }}>Unfriend</Button>
+                            <Button onClick={() => { unfriendUser(friend.friendId); console.log(friend.id) }}>Unfriend</Button>
                         </div>
                     </div>
                 </li>

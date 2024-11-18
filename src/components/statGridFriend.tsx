@@ -28,7 +28,7 @@ function StatGridFriend() {
   if (loading) {
     return (
       <div className="loading-spinner">
-        <h3>Loading your stats...</h3>
+        <h3>Loading testuser's stats...</h3>
         {/* Add a loading spinner (you can use any library or custom spinner) */}
         <div className="spinner">Loading...</div>
       </div>

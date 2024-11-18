@@ -1,3 +1,4 @@
+import WatchDataComparisonChart from "@/components/ComparisonChart"
 import FriendsData from "@/components/friendsData"
 import StatGridFriend from "@/components/statGridFriend"
 import axios from "axios"
@@ -14,6 +15,9 @@ export default async function Page({
     <div className="main-div">
       <div className="container-lg">
         <StatGridFriend/>
+      </div>
+      <div className="container-lg">
+        <WatchDataComparisonChart/>
       </div>
     </div>
   )
