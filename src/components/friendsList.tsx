@@ -49,6 +49,16 @@ function FriendsList() {
 
         }
     }
+    const rejectRequest = async(id: number)=>{
+        
+        try{
+            const rejectedRequest = await axios.post('/api/friends/unfriendUser', {id: id, status: 'unfriended'})
+            alert('Rejected request.')
+        }catch(error){
+            console.log(`Error: ${error}`)
+
+        }
+    }
     const unfriendUser = async(id: number)=>{
         
         try{
@@ -70,7 +80,7 @@ function FriendsList() {
                     <span>sent by: {request.senderUsername}</span>
                     <div className='flex flex-row gap-5'>
                         <Button onClick={()=>{acceptRequest(request.id)}}>Accept</Button>
-                        <Button>Reject</Button>
+                        <Button onClick={()=>{rejectRequest(request.id)}}>Reject</Button>
                     </div>
 
                 </div>
