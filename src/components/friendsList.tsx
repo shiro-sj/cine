@@ -98,9 +98,9 @@ function FriendsList() {
                 <li key={`${friend.id}-${index}`} className="flex flex-row justify-start gap-20 p-5">
                     <img src={friend.profileImage} className="w-20 h-20 rounded-full" alt={`${friend.senderUsername}'s profile`} />
                     <div className="flex flex-col gap-4">
-                        <span>{friend.senderUsername}</span>
+                        <span>{friend.username}</span>
                         <div className="flex flex-row gap-5">
-                            <Link href={`/protected/profile/${friend.senderUsername}`}>
+                            <Link href={`/protected/profile/${friend.username}`}>
                                 <Button>View Profile</Button>
                             </Link>
                             <Button onClick={() => { unfriendUser(friend.id); }}>Unfriend</Button>
