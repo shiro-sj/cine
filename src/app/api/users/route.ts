@@ -9,7 +9,7 @@ export async function GET(){
         const clerkUser = await currentUser()
         if (clerkUser){
             const dbUser = await db.select().from(users).where(eq(users.clerkId, clerkUser.id))
-            const usersList = await db.select({userId: users.id, username: users.username, profileImage: users.imageUrl, status: friendsOfUser.status}).from(users).leftJoin(friendsOfUser, eq(friendsOfUser.senderId, users.id)).where(and(isNull(friendsOfUser), eq(users.id, dbUser[0].id))).groupBy(users.id, friendsOfUser.status)
+            const usersList = await db.select({userId: users.id, username: users.username, profileImage: users.imageUrl, status: friendsOfUser.status}).from(users).leftJoin(friendsOfUser, eq(friendsOfUser.senderId, users.id)).where( eq(users.id, dbUser[0].id)).groupBy(users.id, friendsOfUser.status)
            
             return NextResponse.json({currentUser: dbUser[0], usersList})
 
