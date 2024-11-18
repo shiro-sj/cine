@@ -43,7 +43,7 @@ function ActivityGrid({avatarSrc, username}: ActivityGridProps) {
                     <div className='justify-center flex items-center flex-col h-full w-full gap-4'>
                         <Avatar src={avatarSrc} className='h-28 w-28 outline-2 outline-primary-50 outline-offset-4'/>
                         <h3 className='underline underline-offset-4 font-semibold'>{username}</h3>
-                        <h4>7 friends</h4>
+                        <h4>1 friend</h4>
                         <div className='flex flex-row pt-2 divide-x-2 w-full '>
                             <div className='activity-icon flex-1'>
                                 <Link href='/'>
