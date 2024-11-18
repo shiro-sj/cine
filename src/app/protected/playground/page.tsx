@@ -4,6 +4,7 @@ import axios from "axios";
 import { useUser } from "@clerk/nextjs";
 import MovieTicket from "../../../components/dynamicImages/movieTicket";
 import FutureTicket from "../../../components/dynamicImages/futureTicket";
+import { Button } from "@nextui-org/react";
 
 export default function Page() {
 
@@ -17,9 +18,7 @@ export default function Page() {
 
     const fetchTopMovie = async () => {
         try {
-            // Make an API request to fetch top watched movie data
             const response = await axios.get('/api/stats/top');
-            // Assuming 'topWatched' is an array and contains the movie data
             if (response.data && response.data.topWatched && response.data.topWatched[0]) {
                 const topMovie = response.data.topWatched[0]; // get the top watched movie
                 setMovieTitle(topMovie.title);  // Update movie title
@@ -30,7 +29,6 @@ export default function Page() {
         }
     };
     
-    // Trigger fetching top movie data when signed in
     useEffect(() => {
         if (isSignedIn) {
             fetchTopMovie();
@@ -57,7 +55,6 @@ export default function Page() {
               const blob = await response.blob();
               const url = URL.createObjectURL(blob);
     
-              // Create a download link and click it to download the image
               const link = document.createElement('a');
               link.href = url;
               link.download = 'CineMovieTicket.png';
@@ -76,7 +73,6 @@ export default function Page() {
               const blob = await response.blob();
               const url = URL.createObjectURL(blob);
     
-              // Create a download link and click it to download the image
               const link = document.createElement('a');
               link.href = url;
               link.download = 'CineMovieTicket.png';
@@ -105,24 +101,68 @@ export default function Page() {
     };
 
     return (
-        <div>
-            <h1>Playground</h1>
+        <div className='main-div'>
+          <div className="content-h">
+          <div className='flex flex-col justify-center items-center flex-1'>
+                <h1 className="p-5">Playground</h1>
 
-            <div ref={svgRef} style={{ backgroundColor: "#000000" }}>
-                {movieStyle && (
-                    <MovieTicket movieTitle={movieTitle} watchedDate={watchedTime} />
-                )}
-                {reciptStyle && (
-                    <FutureTicket user={user} movieTitle={movieTitle} watchDate={watchedTime} />
-                )}
+                <div ref={svgRef}>
+                    {movieStyle && (
+                        <MovieTicket movieTitle={movieTitle} watchedDate={watchedTime} />
+                    )}
+                    {reciptStyle && (
+                        <FutureTicket user={user} movieTitle={movieTitle} watchDate={watchedTime} />
+                    )}
+                </div>
+
+                <div className="p-8">
+                <Button variant="ghost" onClick={handleDownload}>Download as PNG</Button>
+
+                </div>
+
+                
             </div>
 
-            <button onClick={handleDownload}>Download as PNG</button>
-
-            <div>
-                <button onClick={handleMovieTicket}>Movie(Movie Ticket)</button>
-                <button onClick={handleRecipt}>TV Show(Receipt)</button>
+            {/* Right side container (Buttons stacked on top of each other) */}
+            <div className="bg-white flex flex-col justify-center items-center gap-20 flex-1">
+                <Button onClick={handleMovieTicket}>Movie(Movie Ticket)</Button>
+                <Button onClick={handleRecipt}>TV Show(Receipt)</Button>
             </div>
+
+          </div>
         </div>
     );
 }
+
+// CSS Styles
+// const styles = {
+//     mainContainer: {
+//         display: 'flex',
+//         justifyContent: 'center', // Center horizontally
+//         alignItems: 'center',     // Center vertically
+//         height: '100vh',
+//         padding: '100px'        // Full viewport height
+//     },
+//     contentContainer: {
+//         display: 'flex',
+//         flexDirection: 'column', // Stack elements vertically
+//         alignItems: 'center',    // Center content horizontally
+//         marginRight: '20px',     // Space between ticket and buttons
+//     },
+//     ticketContainer: {
+//         backgroundColor: "#000000",
+//         marginBottom: '20px',    // Space between ticket and download button
+//     },
+//     buttonContainer: {
+//         display: 'flex',
+//         flexDirection: 'column', // Stack buttons vertically
+//         alignItems: 'flex-start', // Align buttons to the left of the container (right side of the ticket)
+//         justifyContent: 'center', // Center vertically within the button container
+//     },
+//     button: {
+//         marginBottom: '10px',     // Space between buttons
+//     },
+//     downloadButton: {
+//         marginTop: '10px',        // Space between ticket and download button
+//     }
+// };
