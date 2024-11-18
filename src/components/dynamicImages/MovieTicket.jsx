@@ -100,7 +100,7 @@ export default function MovieTicket({ movieTitle, watchedDate}) {
     <text x="9" y ="280" fontWeight="bold" fontSize="20" fill="#ffffff">G</text>
     <text x="35" y ="280" fontWeight="bold" fontSize="20" fill={black}>General</text>
 
-    <text x="10" y ="320" fontSize="10" fill={black}>Please keep and maintain your ticket</text>
+    <text x="10" y ="320" fontSize="7" fill={black}>Please keep and maintain your ticket</text>
 
     <rect x="230" y="0" width="1" height="7" fill={black} />
     <rect x="230" y="10" width="1" height="7" fill={black} />
@@ -145,7 +145,7 @@ export default function MovieTicket({ movieTitle, watchedDate}) {
 
     <text x="240" y ="100" fontSize="8">{watchedDate}</text>
     <text x="240" y ="145" fontSize="8" fill={black}>7:55</text>
-    <text x="240" y ="200" fontSize="8" fontWeight="bolder" fill={black}>Do Not Detach</text>
+    <text x="240" y ="200" fontSize="6" fontWeight="bold" fill={black}>Do Not Detach</text>
     <text x="240" y ="370" fontSize="9"  fill={black}> 348902</text>
     
     <image

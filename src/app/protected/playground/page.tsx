@@ -1,35 +1,41 @@
-// Inspired by reciptify
-
 'use client'
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import axios from "axios";
 import { useUser } from "@clerk/nextjs";
 import MovieTicket from "../../../components/dynamicImages/movieTicket";
-import FutureTicket from "../../../components/dynamicImages/futureTicket"
+import FutureTicket from "../../../components/dynamicImages/futureTicket";
 
 export default function Page() {
 
     const svgRef = useRef(null);
 
-    const { user} = useUser();
-    // const [movieTitle, setMovieTitle] = useState('');
-    // const [watchedTime, setWatchTime] = useState('');
+    const { user, isSignedIn } = useUser();
+    const [movieTitle, setMovieTitle] = useState('');
+    const [watchedTime, setWatchTime] = useState('');
     const [movieStyle, setMovieStyle] = useState(true);
     const [reciptStyle, setReciptStyle] = useState(false);
 
-    // const fetchTopMovie = async () => {
-    //     try {
-    //         const response = await axios.get('/api/stats/top');
-    //         setMovieTitle(response.topWatched,title);
-    //         setWatchTime(response.;
-    //     } catch (error) {
-    //         console.error('Error fetching watch history:', error);
-    //     }
-    // };
-    // 
-    // useEffect(() => {
-    //     if (isSignedIn) fetchTopMovie();
- 
-    // }, [isSignedIn]);
+    const fetchTopMovie = async () => {
+        try {
+            // Make an API request to fetch top watched movie data
+            const response = await axios.get('/api/stats/top');
+            // Assuming 'topWatched' is an array and contains the movie data
+            if (response.data && response.data.topWatched && response.data.topWatched[0]) {
+                const topMovie = response.data.topWatched[0]; // get the top watched movie
+                setMovieTitle(topMovie.title);  // Update movie title
+                setWatchTime(topMovie.entriesCount);  // Update watch count
+            }
+        } catch (error) {
+            console.error('Error fetching watch history:', error);
+        }
+    };
+    
+    // Trigger fetching top movie data when signed in
+    useEffect(() => {
+        if (isSignedIn) {
+            fetchTopMovie();
+        }
+    }, [isSignedIn]);
 
     const handleDownload = async () => {
       const svgElement = svgRef.current;
@@ -58,14 +64,12 @@ export default function Page() {
               link.click();
             }
           } else if (reciptStyle) {
-            console.log('recipt style : ',movieStyle)
-
             const response = await fetch('/api/svgDownload', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify({ htmlContent, width : 620, height : 300 }),
+              body: JSON.stringify({ htmlContent, width: 620, height: 300 }),
             });
     
             if (response.ok) {
@@ -80,9 +84,6 @@ export default function Page() {
               
               URL.revokeObjectURL(url);
             }
-    
-            // Revoke the object URL after download
-            
           } else {
             console.error('Failed to generate image');
           }
@@ -93,40 +94,35 @@ export default function Page() {
     };
     
 
-    const handleMovieTicket = () =>{
+    const handleMovieTicket = () => {
         setMovieStyle(true);
         setReciptStyle(false);
-    }
-    const handleRecipt = () =>{
+    };
+
+    const handleRecipt = () => {
         setMovieStyle(false);
         setReciptStyle(true);
-    }
+    };
 
     return (
         <div>
-            
             <h1>Playground</h1>
 
-             <div ref={svgRef}  style={{ backgroundColor:"#000000"}}>
-                {movieStyle && <MovieTicket  movieTitle={'The Fast and the Furious: Tokyo Drift'} watchedDate={'24/03/04'} />}
-                {reciptStyle && <FutureTicket user = {user} movieTitle ={"The Fast and the Furious: Tokyo Drift"} watchDate ={'24/03/04'}/>}
-                
-            </div> 
-
+            <div ref={svgRef} style={{ backgroundColor: "#000000" }}>
+                {movieStyle && (
+                    <MovieTicket movieTitle={movieTitle} watchedDate={watchedTime} />
+                )}
+                {reciptStyle && (
+                    <FutureTicket user={user} movieTitle={movieTitle} watchDate={watchedTime} />
+                )}
+            </div>
 
             <button onClick={handleDownload}>Download as PNG</button>
 
             <div>
-                <button onClick = {handleMovieTicket}>Movie(Movie Ticket)</button>
-                <button onClick = {handleRecipt}>TV Show(recipt)</button>
+                <button onClick={handleMovieTicket}>Movie(Movie Ticket)</button>
+                <button onClick={handleRecipt}>TV Show(Receipt)</button>
             </div>
-            {/* <div>
-                <button className="m-2" onClick={() => setTimeline('week')}>Week</button>
-                <button className="m-2" onClick={() => setTimeline('month')}>Month</button>
-                <button className="m-2" onClick={() => setTimeline('year')}>Year</button>
-                <button className="m-2" onClick={() => setTimeline('decade')}>Decade</button>
-            </div> */}
         </div>
     );
 }
-
