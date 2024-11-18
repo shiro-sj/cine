@@ -16,7 +16,7 @@ function stats() {
           <TopWatchedGenresChart/>
         </div>
       </div>
-      <div className='container-lg'>
+      <div className='container-lg pt-20'>
         <StatGrid/>
       </div>
     </div>

@@ -84,7 +84,7 @@ function FriendsList() {
             {sentRequests.map((request)=><li key={request.id} className='flex flex-row justify-start gap-20 p-5'>
                 <img src={request.profileImage} className='w-20 h-20 rounded-full'/>
                 <div className='flex flex-col'>
-                    <span>{request.username}</span>
+                    <span>{request.senderUsername}</span>
                     <span>{request.status}</span>
                 </div>
                 
