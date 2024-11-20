@@ -148,6 +148,7 @@ export default function MovieTicket({ movieTitle, watchedDate}) {
     <text x="240" y ="200" fontSize="6" fontWeight="bold" fill={black}>Do Not Detach</text>
     <text x="240" y ="370" fontSize="9"  fill={black}> 348902</text>
     
+    
     <image
           href="https://img.freepik.com/free-photo/white-paper-texture_1194-2301.jpg?t=st=1730839063~exp=1730842663~hmac=7f35e70039c5beeefb676438e1f707679bc1c4f34eb254554f67bcd61c36a7a0&w=996"
           x="0"
