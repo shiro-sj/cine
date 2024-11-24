@@ -15,13 +15,8 @@ function stats() {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
       <div className='basis-1/5'>
 
-=======
-      <div className='container-lg pt-20'>
-        <StatGrid/>
->>>>>>> 74ebdad833fb73a920a803e33fae086679fc366d
       </div>
 
       
