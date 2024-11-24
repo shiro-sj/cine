@@ -54,11 +54,11 @@ body {
 }
 
 main {
-  @apply flex-1 flex box-border p-2 md:p-4 lg:p-8;
+  @apply min-h-screen w-full;
 }
 
 .main-div {
-  @apply flex-1 flex flex-col;
+  @apply flex flex-row box-border p-4;
 } 
 
 /*****************CONTAINERS************************/
@@ -115,7 +115,7 @@ main {
 /***************************STATS***************************/
 
 .stats-grid {
-  @apply flex-1 flex flex-col md:grid md:grid-cols-2 lg:grid lg:grid-cols-4 gap-4;
+  @apply flex-1 flex flex-col md:grid md:grid-cols-2 lg:grid lg:grid-cols-4 gap-2;
 }
 
 .stats-card {
@@ -123,7 +123,7 @@ main {
 }
 
 .stats-card-md {
-  @apply rounded-md bg-content2 relative box-border p-6 basis-1/6 lg:row-span-2 flex flex-col-reverse justify-start items-start transition transform duration-300 ease-in-out hover:scale-105;
+  @apply rounded-md bg-[#422F90] relative box-border p-6 basis-1/6 lg:row-span-2 flex flex-col-reverse justify-start items-start transition transform duration-300 ease-in-out hover:scale-105;
 }
 
 .stats-card-lg {
@@ -167,13 +167,13 @@ main {
 /*****************************FONTS*****************************/
 
 h1 {
-  @apply text-4xl;
+  @apply text-xl;
 }
 
 h2 {
-  @apply text-2xl md:text-4xl lg:text-4xl;
+  @apply text-sm md:text-medium lg:text-lg;
 }
 
 h3 {
-  @apply text-lg md:text-xl lg:text-2xl;
+  @apply text-xs md:text-sm lg:text-medium;
 }

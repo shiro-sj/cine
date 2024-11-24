@@ -5,6 +5,7 @@ import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded'
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded'
 import HourglassBottomRoundedIcon from '@mui/icons-material/HourglassBottomRounded'
 import axios from 'axios'
+import { CircularProgress } from '@nextui-org/react'
 
 function StatGrid() {
   const [stats, setStats] = useState<any>(null);  
@@ -27,10 +28,8 @@ function StatGrid() {
   // Show loading spinner or placeholder if data is still loading
   if (loading) {
     return (
-      <div className="loading-spinner">
-        <h3>Loading your stats...</h3>
-        {/* Add a loading spinner (you can use any library or custom spinner) */}
-        <div className="spinner">Loading...</div>
+      <div className="container-lg flex justify-center items-center">
+        <CircularProgress color="default" label="loading..." aria-label="Loading..."/>
       </div>
     );
   }

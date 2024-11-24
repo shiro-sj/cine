@@ -4,8 +4,8 @@ import React from 'react'
 
 function SignUpPage() {
   return (
-  <div className='main-div max-h-full'>
-    <div className='container-v'>
+  <div className='h-full w-full max-h-full'>
+    <div className='container-v h-full w-full flex justify-center items-center'>
       <div className='relative hidden lg:flex-1 lg:flex lg:flex-col gap-10 lg:h-full lg:w-full justify-center items-center'>
         <Image src='/assets/logo.png' height={200} width={200} alt='logo' className='absolut z-10'/>
         <h1 className='font-extrabold text-[40vh] absolute italic bottom-2/5 right-5/6 z-0 text-purpledark'>cine</h1>

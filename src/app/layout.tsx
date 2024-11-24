@@ -22,6 +22,7 @@ export const metadata: Metadata = {
 
 import {Providers} from "./providers";
 import NavBar from "@/components/navbar";
+import SideBar from "@/components/sidebar";
 
 export default function RootLayout({children}: { children: React.ReactNode }) {
   return (
@@ -29,14 +30,15 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
       <head>
         <link rel="icon" href="/assets/favicon.ico" sizes="any" />
       </head>
-      <body className="min-h-screen">
+      <body>
         <Providers>
-          <div className="purple-dark bg-background text-foreground flex flex-col min-h-screen"> 
-            <NavBar />
-            <main> 
+          <div className="flex flex-row min-h-screen w-screen p-6 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]">
+            <SideBar/>
+            <main className="purple-dark text-foreground "> 
               {children}
             </main>
           </div>
+          
         </Providers>
       </body>
     </html>

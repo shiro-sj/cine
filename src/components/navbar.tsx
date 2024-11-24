@@ -3,7 +3,7 @@ import React from 'react'
 
 import {  Navbar ,   NavbarBrand,   NavbarContent,   NavbarItem} from "@nextui-org/navbar";
 import Link from 'next/link';
-import { SignInButton, SignOutButton, SignUpButton, useUser } from '@clerk/nextjs';
+import { SignInButton, SignOutButton, SignUpButton, UserButton, useUser } from '@clerk/nextjs';
 import {Button} from "@nextui-org/button";
 
 const userMenuItems = [
@@ -23,7 +23,7 @@ function NavBar() {
     const {isSignedIn} = useUser();
 
   return (
-    <Navbar className='box-border p-2' position='sticky'  maxWidth='full' shouldHideOnScroll isBordered isBlurred={false}>
+    <Navbar className='box-border' position='sticky'  maxWidth='full' shouldHideOnScroll isBordered isBlurred={false}>
         <NavbarContent justify='start'>
             <NavbarBrand className='text-2xl font-bold'>
                 cine
@@ -33,7 +33,7 @@ function NavBar() {
         {isSignedIn ? (
           userMenuItems.map(item => (
             <NavbarItem key={item.title}>
-              <Link href={item.path} className='text-2xl'>
+              <Link href={item.path} className='text-xl'>
                 {item.title}
               </Link>
             </NavbarItem>
@@ -51,7 +51,8 @@ function NavBar() {
 
         <NavbarContent justify='end' className='gap-4'>
             {isSignedIn? (
-                <NavbarItem>
+                <NavbarItem className='flex flex-row gap-4'>
+                    <UserButton/>
                     <SignOutButton/>
                 </NavbarItem>
             ):(

@@ -14,8 +14,8 @@ const config: Config = {
       purpledark: "#280050",
     }, 
     fontFamily:{
-      title: ['AuxMono']
-
+      title: ['AuxMono'],
+      body: ['DepartureMono']
     },
     extend: {
       colors: {
@@ -43,7 +43,10 @@ const config: Config = {
         "purple-dark":{
           extend:"dark",
           colors:{
-            background: "#0D001A",
+            background: {
+              DEFAULT: "#090015",
+              900: "#110021",
+            },
             foreground: "#ffffff",
             primary: {
               50: "#3B096C",
@@ -55,8 +58,8 @@ const config: Config = {
               600: "#F182F6",
               700: "#FCADF9",
               800: "#FDD5F9",
-              900: "#FEECFE",
-              DEFAULT: "#DD62ED",
+              900: "#0D001A",
+              DEFAULT: "#FF7F32",
               foreground: "#ffffff",
             },
             focus: "#F182F6",

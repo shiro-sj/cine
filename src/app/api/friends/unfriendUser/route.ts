@@ -7,7 +7,7 @@ export async function POST(request: Request){
     try{
         const payload = await request.json()
         console.log(payload)
-        const response = await db.delete(friendsOfUser).where(eq(friendsOfUser.id, payload.id))
+        const response = await db.delete(friendsOfUser).where(eq(friendsOfUser.senderId, payload.id))
         if (response){
             return NextResponse.json({message: 'Updated successfully.', payload})
 

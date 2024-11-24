@@ -93,7 +93,7 @@ export async function GET() {
             return new Response("User not authenticated", { status: 401 });
         }
     } catch (error) {
-        return new Response(`Error fetching requests: ${error.message}`, {
+        return new Response(`Error fetching requests: ${error}`, {
             status: 500,
         });
     }

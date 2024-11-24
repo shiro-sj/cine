@@ -46,15 +46,12 @@ function Uploader() {
 
 
   return (
-    <div className="container-v">
-      <div className={`flex-1 flex flex-col h-full w-full justify-center items-center border-dashed border-4 rounded-lg hover:bg-foreground-50 ${bgcolor}`}>
-        <form>
-        <input type='file' onChange={handleFileChange} className='w-full h-full'></input>
-
+    <div className="h-full w-full flex justify-center items-center">
+      <div className={`flex flex-col h-full w-1/2 justify-center items-center border-4 rounded-lg hover:bg-foreground-50 ${bgcolor}`}>
+        <form className='flex justify-center items-center'>
+          <input type='file' onChange={handleFileChange} className='w-full h-full flex justify-center items-center'></input>
         </form>
-
       </div>
-      <div className='flex-1'></div>
     </div>
   )
 }
