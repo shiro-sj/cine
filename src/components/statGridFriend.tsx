@@ -43,7 +43,7 @@ function StatGridFriend() {
     <div className="stats-grid">
       <div className="stats-card-lg">
         <h1>
-          testuser's <span className="underline underline-offset-4">month</span>
+          <span className="underline underline-offset-4">month</span>
           <br />
           wrapped.
         </h1>

@@ -28,6 +28,7 @@ function RecentsBar() {
                 },
             });
             if (response.data.poster_path) {
+                console.log(response.data.poster_path)
                 const posterUrl = `https://image.tmdb.org/t/p/w500${response.data.poster_path}`;
 
                 setPosters((prevPosters: any) => ({
