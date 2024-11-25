@@ -1,67 +1,98 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// // This is your Prisma schema file,
+// // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
-generator client {
-  provider = "prisma-client-js"
-}
+// generator client {
+//   provider = "prisma-client-js"
+// }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("POSTGRES_URL")
-}
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("POSTGRES_URL")
+// }
 
-model User {
-  id                Int               @id @default(autoincrement())
-  username          String
-  clerkId           String            @unique
-  email             String            @unique
-  profileImage      String
-  createdAt         DateTime
-  watchHistory      WatchHistory[]
-  friends           Friend[]          @relation("Friends_user")
-  friendOf          Friend[]          @relation("Friends_friend")
-}
+// model User {
+//   id                Int               @id 
+//   username          String
+//   email             String            @unique
+//   bio               String 
+//   profileImageUrl   String
+//   createdAt         DateTime
 
-model WatchHistory {
-  id        Int      @id @default(autoincrement())
-  title     String
-  watchedAt DateTime
-  isTvShow  Boolean
-  tmdbID    String
+//   history           History
+//   friends           Friend[]          @relation("Friends_user")
+//   friendOf          Friend[]          @relation("Friends_friend")
+// }
 
-  runtime Int
-  episodeName String?
-  season  String?
+// model Entry {
+//   id  Int @id @default(autoincrement())
+//   tmdbId  Int?
+//   title String
+//   releaseYear Int?
+//   posterUrl String?
+//   logDate DateTime @default(now())
+//   overview  String
+//   embedding Unsupported("vector(1536)")
 
-  genres    String[]
-  posterPath String
-  releaseDate DateTime
+//   reviews Review[]
+//   ratings Rating[]
+//   watchlists  Watchlist[]
+//   listItems ListItem[]
+// }
+
+// model History{
+//   id  Int@id @default(autoincrement())
+//   user  User  @relation(fields: [userId], references: [id])
+//   userId  Int
+//   entry Entry[]
+//   logDate DateTime @default(now())
+//   review  Review[]?
+//   rating  Rating[]?
+// }
+
+// model Review{
+//   id Int  @id @default(autoincrement())
+//   reviewString  String
+//   ...
+// }
+
+// model WatchHistory {
+//   id        Int      @id @default(autoincrement())
+//   title     String
+//   watchedAt DateTime
+//   isTvShow  Boolean
+//   tmdbID    String
+
+//   runtime Int
+//   episodeName String?
+//   season  String?
+
+//   genres    String[]
+//   posterPath String
+//   releaseDate DateTime
   
-  isUploaded Boolean  @default(false)
-  uploadDate DateTime
+//   isUploaded Boolean  @default(false)
+//   uploadDate DateTime
 
-  userId    Int
-  user      User     @relation(fields: [userId], references: [id])
-}
+//   userId    Int
+//   user      User     @relation(fields: [userId], references: [id])
+// }
 
-model Friend {
-  id         Int    @id @default(autoincrement())
-  username   String
-  friendname String
-  userId     Int   
-  friendId   Int    
-  user       User   @relation("Friends_user", fields: [userId], references: [id], onDelete: Cascade)
-  friend     User   @relation("Friends_friend", fields: [friendId], references: [id], onDelete: Cascade)
-}
+// model Friend {
+//   id         Int    @id @default(autoincrement())
+//   username   String
+//   friendname String
+//   userId     Int   
+//   friendId   Int    
+//   user       User   @relation("Friends_user", fields: [userId], references: [id], onDelete: Cascade)
+//   friend     User   @relation("Friends_friend", fields: [friendId], references: [id], onDelete: Cascade)
+// }
 
-model FriendRequests {
-    id                 Int      @id @default(autoincrement())
-    senderUserName    String
-    receiverUserName  String
-    createdAt         DateTime @default(now())
-}
-
-
+// model FriendRequests {
+//     id                 Int      @id @default(autoincrement())
+//     senderUserName    String
+//     receiverUserName  String
+//     createdAt         DateTime @default(now())
+// }

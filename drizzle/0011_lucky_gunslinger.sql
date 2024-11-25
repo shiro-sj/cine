@@ -1,0 +1,6 @@
+-- ALTER TABLE "entries_genre" ADD COLUMN "userId" integer NOT NULL;
+-- DO $$ BEGIN
+--  ALTER TABLE "entries_genre" ADD CONSTRAINT "entries_genre_userId_entries_userId_fk" FOREIGN KEY ("userId") REFERENCES "public"."entries"("userId") ON DELETE no action ON UPDATE no action;
+-- EXCEPTION
+--  WHEN duplicate_object THEN null;
+-- END $$;

@@ -1,0 +1,2 @@
+-- ALTER TABLE "entries_genre" DROP CONSTRAINT "entries_genre_userId_entries_userId_fk";
+-- ALTER TABLE "entries_genre" DROP COLUMN IF EXISTS "userId";
