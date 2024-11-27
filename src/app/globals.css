@@ -119,23 +119,23 @@ main {
 }
 
 .stats-card {
-  @apply rounded-md bg-content4 relative box-border p-6 basis-1/6 flex flex-col-reverse justify-start items-start transition transform duration-300 ease-in-out hover:scale-105;
+  @apply rounded-md bg-content1 relative box-border p-6 basis-1/6 flex flex-col-reverse justify-start items-start transition transform duration-300 ease-in-out hover:scale-105;
 }
 
 .stats-card-md {
-  @apply rounded-md bg-[#422F90] relative box-border p-6 basis-1/6 lg:row-span-2 flex flex-col-reverse justify-start items-start transition transform duration-300 ease-in-out hover:scale-105;
+  @apply rounded-md bg-content1 relative box-border p-6 basis-1/6 lg:row-span-2 flex flex-col-reverse justify-start items-start transition transform duration-300 ease-in-out hover:scale-105;
 }
 
 .stats-card-lg {
-  @apply rounded-md bg-content1 relative box-border p-6 basis-1/2 md:row-span-2 lg:row-span-3 justify-center items-center flex transition transform duration-300 ease-in-out hover:scale-105;
+  @apply rounded-md bg-content1-300 relative box-border p-6 basis-1/2 md:row-span-2 lg:row-span-3 justify-center items-center flex transition transform duration-300 ease-in-out hover:scale-105;
 }
 
 .stats-card-long {
-  @apply rounded-md bg-content3 relative box-border p-6 basis-1/6 lg:col-span-2 flex flex-col-reverse justify-start items-start transition transform duration-300 ease-in-out hover:scale-105;
+  @apply rounded-md bg-content1 relative box-border p-6 basis-1/6 lg:col-span-2 flex flex-col-reverse justify-start items-start transition transform duration-300 ease-in-out hover:scale-105;
 }
 
 .stats-card-profile {
-  @apply rounded-md bg-primary-50 box-border p-6 basis-1/3 md:row-span-3 md:flex-col lg:row-span-2 lg:flex-col flex flex-row justify-center items-center transition transform duration-300 ease-in-out hover:scale-105;
+  @apply rounded-md bg-content1-300 box-border p-6 basis-1/3 md:row-span-3 md:flex-col lg:row-span-2 lg:flex-col flex flex-row justify-center items-center transition transform duration-300 ease-in-out hover:scale-105;
 }
 
 .stats-icon {
@@ -167,7 +167,7 @@ main {
 /*****************************FONTS*****************************/
 
 h1 {
-  @apply text-xl;
+  @apply font-bold text-large;
 }
 
 h2 {
@@ -175,5 +175,5 @@ h2 {
 }
 
 h3 {
-  @apply text-xs md:text-sm lg:text-medium;
+  @apply text-small font-semibold;
 }

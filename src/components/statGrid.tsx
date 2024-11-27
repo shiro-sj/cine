@@ -41,25 +41,19 @@ function StatGrid() {
   return (
     <div className="stats-grid">
       <div className="stats-card-lg">
-        <h1>
+        <h1 className=''>
           your <span className="underline underline-offset-4">month</span>
           <br />
           wrapped.
         </h1>
       </div>
-      <div className="stats-card-md">
-        <div className="stats-icon">
-          <StarRateRoundedIcon fontSize="inherit" />
-        </div>
-        <h2>{stats.topWatched[0]?.title || 'N/A'}</h2>
-        <h3>most watched</h3>
+      <div className="stats-card-md border-r-8 border-content2">
+        <h1>{stats.topWatched[0]?.title || 'N/A'}</h1>
+        <h3 className='text-foreground-600'>most watched</h3>
       </div>
       <div className="stats-card">
-        <div className="stats-icon">
-          <HourglassBottomRoundedIcon fontSize="inherit" />
-        </div>
-        <h2>{stats.watchTime?.totalRuntime || 'data unavailable.'}</h2>
-        <h3>total minutes</h3>
+        <h1>{stats.watchTime?.totalRuntime || 'data unavailable.'}</h1>
+        <h3 className='text-foreground-600'>total minutes</h3>
       </div>
       <div className="stats-card-profile">
         <div className="flex-1 h-full w-full flex justify-center items-center">
@@ -69,25 +63,16 @@ function StatGrid() {
         </div>
       </div>
       <div className="stats-card">
-        <div className="stats-icon">
-          <VisibilityRoundedIcon fontSize="inherit" />
-        </div>
-        <h2>{stats.tvLogs.count || 'data unavailable.'}</h2>
-        <h3>episodes seen</h3>
+        <h1>{stats.tvLogs.count || 'data unavailable.'}</h1>
+        <h3 className='text-foreground-600'>episodes seen</h3>
       </div>
-      <div className="stats-card-long">
-        <div className="stats-icon">
-          <StarRateRoundedIcon fontSize="inherit" />
-        </div>
-        <h2>{stats.topGenres?.[0]?.name || 'data unavailable.'}</h2>
-        <h3>top genre</h3>
+      <div className="stats-card-long border-r-8 border-content2">
+        <h1>{stats.topGenres?.[0]?.name || 'data unavailable.'}</h1>
+        <h3 className='text-foreground-600'>top genre</h3>
       </div>
       <div className="stats-card">
-        <div className="stats-icon">
-          <VisibilityRoundedIcon fontSize="inherit" />
-        </div>
-        <h2>{stats.movieLogs.count || 'data unavailable.'}</h2>
-        <h3>movies seen</h3>
+        <h1>{stats.movieLogs.count || 'data unavailable.'}</h1>
+        <h3 className='text-foreground-600'>movies seen</h3>
       </div>
     </div>
   );

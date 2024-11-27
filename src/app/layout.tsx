@@ -32,7 +32,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
       </head>
       <body>
         <Providers>
-          <div className="flex flex-row min-h-screen w-screen p-6 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]">
+          <div className="flex flex-row min-h-screen w-screen p-6">
             <SideBar/>
             <main className="purple-dark text-foreground "> 
               {children}

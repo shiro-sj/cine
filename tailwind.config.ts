@@ -41,42 +41,35 @@ const config: Config = {
           colors: {}, // dark theme colors
         },
         "purple-dark":{
-          extend:"dark",
-          colors:{
-            background: {
-              DEFAULT: "#090015",
-              900: "#110021",
-            },
-            foreground: "#ffffff",
-            primary: {
-              50: "#3B096C",
-              100: "#520F83",
-              200: "#7318A2",
-              300: "#9823C2",
-              400: "#c031e2",
-              500: "#DD62ED",
-              600: "#F182F6",
-              700: "#FCADF9",
-              800: "#FDD5F9",
-              900: "#0D001A",
-              DEFAULT: "#FF7F32",
-              foreground: "#ffffff",
-            },
-            focus: "#F182F6",
-          },
           layout:{
-            disabledOpacity: "0.3",
-            radius: {
-              small: "4px",
-              medium: "6px",
-              large: "8px",
-            },
-            borderWidth: {
-              small: "1px",
-              medium: "2px",
-              large: "3px",
-            },
+            fontSize:{
+              large: "1.125rem",
+              medium: "0.875rem",
+              small: "0.75rem"
+            }
           },
+          colors:{
+            //PAGE COLOR
+            background:{
+              DEFAULT: 'hsl(240, 50%, 10%)'
+            },
+            //TEXT
+            foreground:{
+              600: 'hsl(240, 50%, 80%)',
+              DEFAULT: 'hsl(240, 50%, 90%)'
+            },
+            //CARDS
+            content1:{
+              300: 'hsl(240, 50%, 30%)',
+              DEFAULT: 'hsl(240, 50%, 15%)'
+            },
+            //BUTTONS/EMPHASIZE TEXT
+            content2:{
+              DEFAULT: 'hsl(300, 80%, 80%)',
+              foreground: 'hsl(240, 50%, 10%)'
+            }
+          }
+          
         }, // ... custom themes
       } 
     },
