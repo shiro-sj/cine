@@ -54,8 +54,8 @@ function Home() {
 
             <div className="flex flex-row justify-between">
               <div className="flex gap-4">
-                <Button size="sm">Log</Button>
-                <Button size="sm">
+                <Button size="sm" color='primary'><Link href='/protected/log'>Log</Link></Button>
+                <Button size="sm"  color='primary'>
                   <Link href="/protected/upload">
                     Upload
                   </Link>

@@ -26,7 +26,7 @@ import SideBar from "@/components/sidebar";
 
 export default function RootLayout({children}: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="purple-dark">
+    <html lang="en" className="purple-light">
       <head>
         <link rel="icon" href="/assets/favicon.ico" sizes="any" />
       </head>
@@ -34,7 +34,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         <Providers>
           <div className="flex flex-row min-h-screen w-screen p-6">
             <SideBar/>
-            <main className="purple-dark text-foreground "> 
+            <main> 
               {children}
             </main>
           </div>

@@ -70,7 +70,44 @@ const config: Config = {
             }
           }
           
-        }, // ... custom themes
+        },
+        "purple-light":{
+          layout:{
+            fontSize:{
+              large: "1.125rem",
+              medium: "0.875rem",
+              small: "0.75rem"
+            }
+          },
+          colors:{
+            //PAGE COLOR
+            background:{
+              DEFAULT: 'hsl(240, 50%, 90%)'
+            },
+            //TEXT
+            foreground:{
+              600: 'hsl(240, 50%, 20%)',
+              DEFAULT: 'hsl(240, 50%, 10%)'
+            },
+            //PRIMARY
+            primary:{
+              DEFAULT: 'hsl(240, 50%, 10%)'
+
+            },
+            //CARDS
+            content1:{
+              300: 'hsl(240, 50%, 85%)',
+              DEFAULT: 'hsl(240, 50%, 95%)'
+            },
+            //BUTTONS/EMPHASIZE TEXT
+            content2:{
+              DEFAULT: 'hsl(300, 80%, 20%)',
+              foreground: 'hsl(240, 50%, 90%)'
+            }
+          }
+          
+
+        } // ... custom themes
       } 
     },
     

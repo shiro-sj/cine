@@ -48,9 +48,7 @@
 
 body {
   font-family: InclusiveSans, Arial, Helvetica, sans-serif;
-  color: var(--foreground);
-  background: var(--background);
-  @apply tracking-widest min-h-screen;
+  @apply tracking-widest min-h-screen text-foreground bg-background;
 }
 
 main {

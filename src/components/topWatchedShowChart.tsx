@@ -4,6 +4,7 @@ import axios from 'axios';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
+import { CircularProgress } from '@nextui-org/react';
 
 // The component for the bar chart
 const WatchStatsByWeekdayChart = () => {
@@ -29,7 +30,7 @@ const WatchStatsByWeekdayChart = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <CircularProgress color="default" label="loading..." aria-label="Loading..."/>
   }
 
   if (error) {
@@ -38,13 +39,11 @@ const WatchStatsByWeekdayChart = () => {
 
   return (
     <div className="p-4 w-full h-full">
-      <ResponsiveContainer width="100%" height={400} className="text-sm">
-        <BarChart data={weeklyStats}>
-          <XAxis dataKey="dayOfWeek" />
-          <YAxis />
+      <ResponsiveContainer width="100%" height={400} className="text-xs">
+        <BarChart data={weeklyStats} >
+        <XAxis dataKey="dayOfWeek" axisLine={false} tickLine={false} dy={10}/>
           <Tooltip />
-          <Legend />
-          <Bar dataKey="entryCount" fill="#8884d8" />
+          <Bar dataKey="entryCount" fill="hsl(240, 50%, 10%)" radius={[10, 10, 10, 10]} isAnimationActive={false} />
         </BarChart>
       </ResponsiveContainer>
     </div>

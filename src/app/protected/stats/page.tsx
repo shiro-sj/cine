@@ -1,27 +1,131 @@
+'use client'
 import WatchStatsByWeekdayChart from '@/components/topWatchedShowChart'
 import WatchStatsChart from '@/components/watchStats'
-import { Button, ButtonGroup, ScrollShadow } from '@nextui-org/react'
-import React from 'react'
+import { Button, ButtonGroup, Divider, ScrollShadow } from '@nextui-org/react'
+import React, { useState } from 'react'
+import BubbleChartIcon from '@mui/icons-material/BubbleChart';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
+import FunctionsIcon from '@mui/icons-material/Functions';
 
-function stats() {
+function Stats() {
+  const [span, setSpan] = useState("Week");
+  
   return (
-    <div className="h-full w-full flex flex-row gap-2 box-border p-8">
+    <div className="h-full w-full flex flex-row gap-2 box-border p-8 max-h-screen">
       <div className='basis-4/5 h-full w-full flex flex-col justify-start items-center gap-10'>
       <div>
-        <ButtonGroup>
-          <Button>Week</Button>
-          <Button>Month</Button>
-          <Button>Year</Button>
-          <Button>All</Button>
+        <ButtonGroup color='primary' className='shadow-lg'>
+          <Button onClick={()=> setSpan("Week")}>Week</Button>
+          <Button onClick={()=> setSpan("Month")}>Month</Button>
+          <Button onClick={()=> setSpan("Year")}>Year</Button>
+          <Button onClick={()=> setSpan("Lifetime")}>Lifetime </Button>
         </ButtonGroup>
-        
       </div>
-        <div className='h-[40vh] w-full flex flex-col items-center gap-10'>
-          <h1 className='font-semibold'>This month</h1>
-            <div className='flex h-full w-full flex-row justify-center items-center gap-10 box-border p-6 '>
-              <WatchStatsChart/>
-              <WatchStatsByWeekdayChart/>
-            </div>
+        <div className='h-full w-full flex flex-col items-center gap-10'>
+          <h1 className='font-semibold'>{span}</h1>
+
+          {/* GRAPHS GRID */}
+          <div className='flex h-full w-full pb-14'>
+            <ScrollShadow hideScrollBar className='h-full w-full'>
+              <div className='grid grid-cols-2 w-full h-full gap-6'>
+                <div className='h-[50vh] flex flex-col bg-content1 col-span-1 rounded-lg shadow-lg box-border p-4'>
+                  <div className='text-3xl flex flex-row justify-start gap-2'>
+                    <BubbleChartIcon fontSize='inherit' className='text-primary'/>
+                    <h2>TV</h2>
+                  </div>
+                  <div className='flex flex-col justify-center items-center h-full'>
+                    {/* CIRCLE GRAPH */}
+                    <div className='basis-2/3 flex justify-center items-center'>
+                      Circle Graph
+
+                    </div>
+                    {/* LEGENDS */}
+                    <div className='basis-1/3 flex justify-center items-center'>
+                      Legends
+
+                    </div>
+
+                  </div>
+                </div>
+                <div className='h-[50vh] flex flex-col bg-content1 col-span-1 rounded-lg shadow-lg box-border p-4'>
+                  <div className='text-3xl flex flex-row justify-start gap-2'>
+                    <AnalyticsIcon fontSize='inherit' className='text-primary'/>
+                    <h2>Film</h2>
+                  </div>
+                  <div className='w-full flex flex-col justify-center items-center h-full'>
+                    {/* CIRCLE GRAPH */}
+                    <div className='basis-3/5 w-full flex flex-col justify-end items-start box-border p-4'>
+                     <h1 className='text-3xl'>27</h1>
+                     <h2>movies watched</h2>
+                    </div>
+                    {/* LEGENDS */}
+                    <div className='basis-2/5 flex flex-row justify-around items-center w-full'>
+                      <div className='flex flex-row justify-center items-center gap-2'>
+                        <h1>6</h1>
+                        <div>
+                          <h3>different<br/>countries</h3>
+                        </div>
+                      </div>
+                      <div className='flex flex-row justify-center items-center gap-2'>
+                        <h1>4</h1>
+                        <div>
+                          <h3>different<br/>genres</h3>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+
+                <div className='h-[50vh] bg-content1 col-span-2 rounded-lg shadow-lg'>
+                  <WatchStatsByWeekdayChart/>
+                </div>
+
+
+                <div className='h-[20vh] bg-content1 col-span-1 rounded-lg shadow-lg flex flex-col box-border p-4'>
+                  <div className='text-3xl flex flex-row justify-start gap-2'>
+                    <FunctionsIcon fontSize='inherit' className='text-primary'/>
+                  </div>
+                  <div className='flex flex-col-reverse justify-center h-full items-center w-full'>
+                    <div className='flex flex-row justify-center items-center gap-2'>
+                      <h1 className='text-2xl'>6</h1>
+                      <h2>episodes <span className='underline underline-offset-4'>per day</span></h2>
+                    </div>
+                    <div>
+                      <h2>average</h2>
+                    </div>
+                  </div>
+                </div>
+
+
+                
+                <div className='h-[20vh] bg-content1 col-span-1 rounded-lg shadow-lg flex flex-col box-border p-4'>
+                  <div className='text-3xl flex flex-row justify-start gap-2'>
+                    <FunctionsIcon fontSize='inherit' className='text-primary'/>
+                  </div>
+                  <div className='flex flex-col-reverse justify-center h-full items-center w-full'>
+                    <div className='flex flex-row justify-center items-center gap-2'>
+                      <h1 className='text-2xl'>0.33</h1>
+                      <h2>movies <span className='underline underline-offset-4'>per day</span></h2>
+                    </div>
+                    <div>
+                      <h2>average</h2>
+                    </div>
+                  </div>
+                </div>
+
+                <div className='h-[30vh] bg-content1 col-span-2 rounded-lg shadow-lg'></div>
+                <div className='h-[50vh] bg-content1 col-span-2 rounded-lg shadow-lg'></div>
+              </div>
+            </ScrollShadow>
+
+          </div>
+          
+
+          
         </div>
       </div>
       <div className='basis-1/5'>
@@ -33,4 +137,4 @@ function stats() {
   )
 }
 
-export default stats
+export default Stats

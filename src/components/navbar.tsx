@@ -29,7 +29,7 @@ function NavBar() {
                 cine
             </NavbarBrand>
         </NavbarContent>
-        <NavbarContent justify='center' className='hidden md:flex gap-8'>
+        <NavbarContent justify='center' className='hidden md:flex gap-8 text-foreground'>
         {isSignedIn ? (
           userMenuItems.map(item => (
             <NavbarItem key={item.title}>
