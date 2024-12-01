@@ -86,6 +86,7 @@ const config: Config = {
             },
             //TEXT
             foreground:{
+              300:'hsl(240, 50%, 40%)',
               600: 'hsl(240, 50%, 20%)',
               DEFAULT: 'hsl(240, 50%, 10%)'
             },

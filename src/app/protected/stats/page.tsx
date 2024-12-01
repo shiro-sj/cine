@@ -6,6 +6,7 @@ import React, { useState } from 'react'
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 import FunctionsIcon from '@mui/icons-material/Functions';
+import LeaderboardIcon from '@mui/icons-material/Leaderboard';
 
 function Stats() {
   const [span, setSpan] = useState("Week");
@@ -80,12 +81,21 @@ function Stats() {
                 </div>
 
 
-                <div className='h-[50vh] bg-content1 col-span-2 rounded-lg shadow-lg'>
-                  <WatchStatsByWeekdayChart/>
+                <div className='h-[50vh] bg-content1 col-span-2 rounded-lg shadow-lg box-border p-4'>
+                  <div className='flex flex-col max-h-full'>
+                    <div className='text-3xl flex flex-row gap-2 items-center justify-start'>
+                      <LeaderboardIcon fontSize='inherit' className='text-primary'/>
+                      <h2>Entries by weekday</h2>
+                    </div>
+                    <div className='flex'>
+                      <WatchStatsByWeekdayChart/>
+                    </div>
+                    
+                  </div>
                 </div>
 
 
-                <div className='h-[20vh] bg-content1 col-span-1 rounded-lg shadow-lg flex flex-col box-border p-4'>
+                <div className='h-[20vh] bg-content1 col-span-1 rounded-lg shadow-lg flex flex-col box-border p-6'>
                   <div className='text-3xl flex flex-row justify-start gap-2'>
                     <FunctionsIcon fontSize='inherit' className='text-primary'/>
                   </div>
@@ -102,7 +112,7 @@ function Stats() {
 
 
                 
-                <div className='h-[20vh] bg-content1 col-span-1 rounded-lg shadow-lg flex flex-col box-border p-4'>
+                <div className='h-[20vh] bg-content1 col-span-1 rounded-lg shadow-lg flex flex-col box-border p-6'>
                   <div className='text-3xl flex flex-row justify-start gap-2'>
                     <FunctionsIcon fontSize='inherit' className='text-primary'/>
                   </div>
@@ -117,7 +127,26 @@ function Stats() {
                   </div>
                 </div>
 
-                <div className='h-[30vh] bg-content1 col-span-2 rounded-lg shadow-lg'></div>
+                <div className='h-[30vh] bg-content1 col-span-2 rounded-lg shadow-lg box-border p-4'>
+                  <div className='h-full w-full justify-around items-center flex flex-row'>
+                    <div className='flex flex-col justify-center items-center gap-2'>
+                      <h1>374+</h1>
+                      <h3>minutes watched</h3>
+                    </div>
+                    <div className='flex flex-col justify-center items-center gap-2'>
+                      <h1>7</h1>
+                      <h3>days logged</h3>
+                    </div>
+                    <div className='flex flex-col justify-center items-center gap-2'>
+                      <h1>Wednesday</h1>
+                      <h3>most logged day</h3>
+                    </div>
+                   
+                    
+                  </div>
+                </div>
+                
+
                 <div className='h-[50vh] bg-content1 col-span-2 rounded-lg shadow-lg'></div>
               </div>
             </ScrollShadow>

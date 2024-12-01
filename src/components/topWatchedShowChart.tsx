@@ -39,7 +39,7 @@ const WatchStatsByWeekdayChart = () => {
 
   return (
     <div className="p-4 w-full h-full">
-      <ResponsiveContainer width="100%" height={400} className="text-xs">
+      <ResponsiveContainer width="100%" height={350} className="text-xs">
         <BarChart data={weeklyStats} >
         <XAxis dataKey="dayOfWeek" axisLine={false} tickLine={false} dy={10}/>
           <Tooltip />

@@ -173,5 +173,5 @@ h2 {
 }
 
 h3 {
-  @apply text-small font-semibold;
+  @apply text-medium text-foreground-300;
 }
