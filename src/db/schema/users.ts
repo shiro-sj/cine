@@ -100,6 +100,9 @@ export const entriesOnGenre = pgTable('entries_genre', {
     entryId: integer().notNull().references(()=> entries.id),
     genreId: integer().notNull().references(()=> genres.id),
     userId: integer().notNull().references(() => users.id),
+    type: varchar({length: 256}),
+    date: date({mode: "date"}).defaultNow(),
+    
 },
 (t)=>({
     pk: primaryKey({columns: [t.entryId, t.genreId] }),

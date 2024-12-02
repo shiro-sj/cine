@@ -1,15 +1,39 @@
 'use client'
-import WatchStatsByWeekdayChart from '@/components/topWatchedShowChart'
-import WatchStatsChart from '@/components/watchStats'
+import WatchStatsByWeekdayChart from '@/components/graphs/weekday'
 import { Button, ButtonGroup, Divider, ScrollShadow } from '@nextui-org/react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 import FunctionsIcon from '@mui/icons-material/Functions';
 import LeaderboardIcon from '@mui/icons-material/Leaderboard';
+import GenrePieChart from '@/components/graphs/genresPie'
 
 function Stats() {
   const [span, setSpan] = useState("Week");
+  
+  const [topGenres, setTopGenres] = useState<any>([]);
+  const [tvGenres, setTvGenres] = useState<any>([]);
+  const [movieGenres, setMovieGenres] = useState<any>([]);
+  
+  const [weekdayEntries, setWeekdayEntries] = useState<any>([]);
+
+
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try{
+        const response = await fetch(`/api/stats/${span.toLowerCase()}`); 
+        const data = await response.json();
+        setTopGenres(data.topGenres);
+        setWeekdayEntries(data.weekdayEntries)
+      } catch{
+        
+      }
+      
+    };
+    fetchData();
+  }, [span]);
   
   return (
     <div className="h-full w-full flex flex-row gap-2 box-border p-8 max-h-screen">
@@ -88,7 +112,7 @@ function Stats() {
                       <h2>Entries by weekday</h2>
                     </div>
                     <div className='flex'>
-                      <WatchStatsByWeekdayChart/>
+                      <WatchStatsByWeekdayChart weekdayEntries={weekdayEntries}/>
                     </div>
                     
                   </div>
@@ -141,13 +165,22 @@ function Stats() {
                       <h1>Wednesday</h1>
                       <h3>most logged day</h3>
                     </div>
-                   
-                    
                   </div>
                 </div>
                 
 
-                <div className='h-[50vh] bg-content1 col-span-2 rounded-lg shadow-lg'></div>
+                <div className='h-[50vh] box-border p-4 bg-content1 col-span-2 rounded-lg shadow-lg'>
+                  <div className='h-full w-full flex flex-row gap-4'>
+                    <div className='basis-1/3 h-full w-full flex justify-center items-center rounded-lg'>
+                      <h1>Genres</h1>
+                    </div>
+                    <div className='basis-2/3 h-full w-full flex justify-center rounded-lg'>
+                      <GenrePieChart topGenres={topGenres} />
+                    </div>
+
+                  </div>
+                 
+                </div>
               </div>
             </ScrollShadow>
 

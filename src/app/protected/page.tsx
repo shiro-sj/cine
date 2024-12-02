@@ -1,12 +1,12 @@
 'use client'
 import {useUser} from "@clerk/nextjs"
-import StatGrid from "@/components/statGrid"
+import StatGrid from "@/components/home/statGrid"
 import { avatar, Avatar, Badge, Button, Card, CardBody, CardFooter, Divider, Input, Image, Listbox, ListboxItem, ScrollShadow } from "@nextui-org/react";
 import Link from "next/link";
 import Diversity3RoundedIcon from '@mui/icons-material/Diversity3Rounded';
 import LocalActivityIcon from '@mui/icons-material/LocalActivity';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-import Footer from "@/components/footer";
+import Footer from "@/components/main/footer";
 
 const friendsList = [
   {

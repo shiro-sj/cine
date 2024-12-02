@@ -1,4 +1,4 @@
-import Uploader from '@/components/uploader'
+import Uploader from '@/components/home/uploader'
 import React from 'react'
 
 function Upload() {

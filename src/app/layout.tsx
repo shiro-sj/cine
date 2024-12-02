@@ -21,8 +21,7 @@ export const metadata: Metadata = {
 };
 
 import {Providers} from "./providers";
-import NavBar from "@/components/navbar";
-import SideBar from "@/components/sidebar";
+import SideBar from "@/components/main/sidebar";
 
 export default function RootLayout({children}: { children: React.ReactNode }) {
   return (

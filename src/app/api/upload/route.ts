@@ -2,7 +2,7 @@ import { entries, entriesOnGenre, genres, users } from "@/db/schema/users";
 import { chunkArray } from "@/lib/helpers";
 import { findEpisode, findMovie, findSeries, searchMovie, searchSeries } from "@/lib/tmdb";
 import { db } from "@/db";
-import { eq, and } from "drizzle-orm";
+import { eq, and, SQLWrapper } from "drizzle-orm";
 import { currentUser } from "@clerk/nextjs/server";
 import OpenAI from 'openai';
 
@@ -49,7 +49,7 @@ export async function POST(request: Request) {
           
                     const showTitle = parts[0];
                     try {
-                      let type;
+                      let type: string | SQLWrapper;
                       const series = await searchSeries(searchUrl, showTitle);
                       if (series != null) {
                           type = 'tv'
@@ -110,6 +110,8 @@ export async function POST(request: Request) {
                                       userId: dbUserId,
                                       entryId: logged.id,
                                       genreId: genre,
+                                      //type: type,
+                                      date: entry.date,
                                   }))
                                   const entryGenreLog = await db.insert(entriesOnGenre).values(entryOnGenre);
                               }
@@ -143,6 +145,7 @@ export async function POST(request: Request) {
                                                   entryId: logged.id,
                                                   genreId: genre,
                                                   userId: dbUserId,
+                                                  date: entry.date,
                                               }))
                                               const entryGenreLog = await db.insert(entriesOnGenre).values(entryOnGenre);
                                           }
@@ -177,6 +180,7 @@ export async function POST(request: Request) {
                                                       entryId: logged.id,
                                                       genreId: genre,
                                                       userId: dbUserId,
+                                                      date: entry.date,
                                                   }))
                                                   const entryGenreLog = await db.insert(entriesOnGenre).values(entryOnGenre);
                                               }
@@ -227,6 +231,7 @@ export async function POST(request: Request) {
                                   entryId: logged.id,
                                   genreId: genre,
                                   userId: dbUserId,
+                                  date: entry.date,
                               }))
                               const entryGenreLog = await db.insert(entriesOnGenre).values(entryOnGenre);
                           }

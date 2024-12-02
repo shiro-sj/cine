@@ -28,9 +28,7 @@ function StatGrid() {
   // Show loading spinner or placeholder if data is still loading
   if (loading) {
     return (
-      <div className="container-lg flex justify-center items-center">
-        <CircularProgress color="default" label="loading..." aria-label="Loading..."/>
-      </div>
+        <CircularProgress color="primary" label="loading..." aria-label="Loading..."/>
     );
   }
 
