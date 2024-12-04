@@ -110,7 +110,7 @@ export async function POST(request: Request) {
                                       userId: dbUserId,
                                       entryId: logged.id,
                                       genreId: genre,
-                                      //type: type,
+                                      type: entry.type,
                                       date: entry.date,
                                   }))
                                   const entryGenreLog = await db.insert(entriesOnGenre).values(entryOnGenre);
@@ -145,6 +145,7 @@ export async function POST(request: Request) {
                                                   entryId: logged.id,
                                                   genreId: genre,
                                                   userId: dbUserId,
+                                                  type: entry.type,
                                                   date: entry.date,
                                               }))
                                               const entryGenreLog = await db.insert(entriesOnGenre).values(entryOnGenre);
@@ -180,6 +181,7 @@ export async function POST(request: Request) {
                                                       entryId: logged.id,
                                                       genreId: genre,
                                                       userId: dbUserId,
+                                                      type: entry.type,
                                                       date: entry.date,
                                                   }))
                                                   const entryGenreLog = await db.insert(entriesOnGenre).values(entryOnGenre);
@@ -231,6 +233,7 @@ export async function POST(request: Request) {
                                   entryId: logged.id,
                                   genreId: genre,
                                   userId: dbUserId,
+                                  type: entry.type,
                                   date: entry.date,
                               }))
                               const entryGenreLog = await db.insert(entriesOnGenre).values(entryOnGenre);

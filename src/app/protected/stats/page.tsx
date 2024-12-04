@@ -10,10 +10,14 @@ import GenrePieChart from '@/components/graphs/genresPie'
 
 function Stats() {
   const [span, setSpan] = useState("Week");
+
+  const [watchTime, setWatchTime] = useState(0);
   
   const [topGenres, setTopGenres] = useState<any>([]);
   const [tvGenres, setTvGenres] = useState<any>([]);
   const [movieGenres, setMovieGenres] = useState<any>([]);
+
+  const [genreSpan, setGenreSpan] = useState(topGenres);
   
   const [weekdayEntries, setWeekdayEntries] = useState<any>([]);
 
@@ -26,7 +30,10 @@ function Stats() {
         const response = await fetch(`/api/stats/${span.toLowerCase()}`); 
         const data = await response.json();
         setTopGenres(data.topGenres);
-        setWeekdayEntries(data.weekdayEntries)
+        setTvGenres(data.tvGenres);
+        setMovieGenres(data.movieGenres);
+        setWeekdayEntries(data.weekdayEntries);
+        setWatchTime(data.watchTime[0].totalRuntime)
       } catch{
         
       }
@@ -154,7 +161,7 @@ function Stats() {
                 <div className='h-[30vh] bg-content1 col-span-2 rounded-lg shadow-lg box-border p-4'>
                   <div className='h-full w-full justify-around items-center flex flex-row'>
                     <div className='flex flex-col justify-center items-center gap-2'>
-                      <h1>374+</h1>
+                      <h1>{watchTime}+</h1>
                       <h3>minutes watched</h3>
                     </div>
                     <div className='flex flex-col justify-center items-center gap-2'>
@@ -171,11 +178,17 @@ function Stats() {
 
                 <div className='h-[50vh] box-border p-4 bg-content1 col-span-2 rounded-lg shadow-lg'>
                   <div className='h-full w-full flex flex-row gap-4'>
-                    <div className='basis-1/3 h-full w-full flex justify-center items-center rounded-lg'>
+                    <div className='basis-1/3 h-full w-full flex flex-col justify-center items-center rounded-lg'>
                       <h1>Genres</h1>
+                      <ButtonGroup color='primary' className='pt-8'>
+                        <Button onClick={()=> setGenreSpan(tvGenres)}>TV</Button>
+                        <Button onClick={()=> setGenreSpan(movieGenres)}>Movie</Button>
+                        <Button onClick={()=> setGenreSpan(topGenres)}>All</Button>
+                      </ButtonGroup>
+
                     </div>
                     <div className='basis-2/3 h-full w-full flex justify-center rounded-lg'>
-                      <GenrePieChart topGenres={topGenres} />
+                      <GenrePieChart topGenres={genreSpan}/>
                     </div>
 
                   </div>
