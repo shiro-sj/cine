@@ -26,11 +26,11 @@ import LayoutWrapper from "./layoutWrapper";
 
 export default function RootLayout({children}: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="purple-dark">
+    <html lang="en" className="purple-dark scrollbar-hide">
       <head>
         <link rel="icon" href="/assets/favicon.ico" sizes="any" />
       </head>
-      <body>
+      <body className="scrollbar-hide">
         <Providers>
           <LayoutWrapper>
             <SideBar/>
