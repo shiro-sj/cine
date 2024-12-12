@@ -3,7 +3,7 @@ import { Table, Avatar, TableHeader, TableBody, TableCell, TableColumn, TableRow
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
-function RecentsBar() {
+function RecentsTable() {
     const [recents, setRecents] = useState<any[]>([]);
     const [posters, setPosters] = useState<any>({});
 
@@ -95,4 +95,4 @@ function RecentsBar() {
     );
 }
 
-export default RecentsBar;
+export default RecentsTable

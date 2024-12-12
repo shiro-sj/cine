@@ -26,6 +26,11 @@
 }
 
 @font-face {
+  font-family: 'KodeMono';
+  src: url('/fonts/KodeMono-VariableFont_wght.ttf')
+}
+
+@font-face {
   font-family: 'DepartureMono';
   src: url('/fonts/DepartureMono-Regular.woff'),
        url('/fonts/DepartureMono-Regular.woff2'),
@@ -47,7 +52,7 @@
 }
 
 body {
-  font-family: InclusiveSans, Arial, Helvetica, sans-serif;
+  font-family: KodeMono, Arial, Helvetica, sans-serif;
   @apply tracking-widest min-h-screen text-foreground bg-background;
 }
 

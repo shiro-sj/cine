@@ -3,15 +3,16 @@ import React, { useEffect, useState } from 'react'
 import { Button } from '@nextui-org/button'
 import axios from 'axios'
 import { CircularProgress } from '@nextui-org/react'
+import { FriendsProfileProps } from '@/lib/interfaces'
 
-function StatGrid() {
+function StatGrid({username}: FriendsProfileProps ) {
   const [stats, setStats] = useState<any>(null);  
   const [loading, setLoading] = useState(true);    
 
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const results = await axios.get('/api/stats/wrapped');
+        const results = await axios.get(`/api/friends/wrapped/?username=${username}`);
         setStats(results.data);
       } catch (error) {
         console.log(`Error fetching stats: ${error}`);

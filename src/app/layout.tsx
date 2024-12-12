@@ -22,22 +22,25 @@ export const metadata: Metadata = {
 
 import {Providers} from "./providers";
 import SideBar from "@/components/main/sidebar";
+import LayoutWrapper from "./layoutWrapper";
+import { Divider } from "@nextui-org/divider";
+
 
 export default function RootLayout({children}: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="purple-light">
+    <html lang="en" className="purple-dark">
       <head>
         <link rel="icon" href="/assets/favicon.ico" sizes="any" />
       </head>
       <body>
         <Providers>
-          <div className="flex flex-row min-h-screen w-screen p-6">
+          <LayoutWrapper>
             <SideBar/>
-            <main> 
-              {children}
-            </main>
-          </div>
-          
+              <main> 
+                {children}
+              </main>
+          </LayoutWrapper>
+
         </Providers>
       </body>
     </html>

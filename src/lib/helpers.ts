@@ -22,5 +22,11 @@ export function sortByDayOfWeek(weekdayEntries: any){
 
 }
 
+export function sortByEntriesCount(weekdayEntries: any) {
+  weekdayEntries.sort((a: { entryCount: number; }, b: { entryCount: number; }) => {
+    return b.entryCount - a.entryCount;
+  });
+}
+
 
 

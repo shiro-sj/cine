@@ -17,7 +17,7 @@ function Stats() {
   const [tvGenres, setTvGenres] = useState<any>([]);
   const [movieGenres, setMovieGenres] = useState<any>([]);
 
-  const [genreSpan, setGenreSpan] = useState(topGenres);
+  const [genreSpan, setGenreSpan] = useState<any>([]);
   
   const [weekdayEntries, setWeekdayEntries] = useState<any>([]);
 
@@ -34,6 +34,7 @@ function Stats() {
         setMovieGenres(data.movieGenres);
         setWeekdayEntries(data.weekdayEntries);
         setWatchTime(data.watchTime[0].totalRuntime)
+        setGenreSpan(data.tvGenres);
       } catch{
         
       }

@@ -15,7 +15,7 @@ export async function GET(request: Request) {
             return new Response('Username query parameter is required', { status: 400 });
         }
 
-        const friendsData = await db.select().from(users).where(eq(users.username, username));
+        const friendsData = await db.select({bio: users.bio, id: users.id, email: users.email, imageUrl: users.imageUrl, username: users.username, createdAt: users.createdAt}).from(users).where(eq(users.username, username));
 
         if (friendsData.length === 0) {
             return new Response('User not found', { status: 404 });

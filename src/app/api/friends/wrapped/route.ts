@@ -4,18 +4,17 @@ import { currentUser } from "@clerk/nextjs/server"
 import { count, eq, and, gte, sum, countDistinct, desc } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
-export async function GET(){
+export async function GET(request: Request){
     try{
-        const user = await currentUser();
-        const setback = 1;
+        const url = new URL(request.url);
+        const username = url.searchParams.get("username");
 
-        if (user){
+        if (username){
             const comparisonDate = new Date();
-            //comparisonDate.setFullYear(comparisonDate.getFullYear() - 5);
             comparisonDate.setDate(1);  // Set to the first day of the month
             comparisonDate.setHours(0, 0, 0, 0);
 
-            const dbUser = await db.select().from(users).where(eq(users.clerkId, user.id))
+            const dbUser = await db.select().from(users).where(eq(users.username, username))
             const tvLogs = await db.select({ count: count(entries.id)}).from(entries).where(and(eq(entries.type, 'tv'), eq(entries.userId, dbUser[0].id), gte(entries.date, comparisonDate)))
             const movieLogs = await db.select({ count: count(entries.id)}).from(entries).where(and(eq(entries.type, 'movie'), eq(entries.userId, dbUser[0].id), gte(entries.date, comparisonDate)))
             const watchTime = await db.select({ totalRuntime: sum(entries.runtime)}).from(entries).where(and( eq(entries.userId, dbUser[0].id), gte(entries.date, comparisonDate)))

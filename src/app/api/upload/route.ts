@@ -15,7 +15,10 @@ export async function POST(request: Request) {
     }
 
     try{
+    
         const currentDbUser = await db.select({id: users.id, username: users.username}).from(users).where(eq(users.clerkId, user.id))
+        const deleteEntriesOnGenre = await db.delete(entriesOnGenre).where(eq(entriesOnGenre.userId, currentDbUser[0].id ))
+        const deleteEntries = await db.delete(entries).where(eq(entries.userId, currentDbUser[0].id ))
         if (currentDbUser.length > 0){
             dbUserId = currentDbUser[0].id
             try {

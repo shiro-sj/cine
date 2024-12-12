@@ -1,7 +1,7 @@
 // app/providers.tsx
 'use client'
 
-import { ClerkProvider } from '@clerk/nextjs'
+import { ClerkProvider, useUser } from '@clerk/nextjs'
 import {NextUIProvider} from '@nextui-org/react'
 import {dark} from '@clerk/themes'
 

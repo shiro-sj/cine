@@ -4,7 +4,7 @@ import React from 'react'
 
 function SignUpPage() {
   return (
-  <div className='h-full w-full max-h-full'>
+  <div className='h-full w-full min-h-full box-border p-8'>
     <div className='container-v h-full w-full flex justify-center items-center'>
       <div className='relative hidden lg:flex-1 lg:flex lg:flex-col gap-10 lg:h-full lg:w-full justify-center items-center'>
         <Image src='/assets/logo.png' height={200} width={200} alt='logo' className='absolut z-10'/>

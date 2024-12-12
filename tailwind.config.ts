@@ -67,6 +67,11 @@ const config: Config = {
             content2:{
               DEFAULT: 'hsl(300, 80%, 80%)',
               foreground: 'hsl(240, 50%, 10%)'
+            },
+            primary:{
+              DEFAULT: 'hsl(240, 50%, 90%)',
+              foreground: 'hsl(240, 50%, 10%)'
+
             }
           }
           

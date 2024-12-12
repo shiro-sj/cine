@@ -4,7 +4,7 @@ import React from 'react'
 
 function SignInPage() {
   return (
-    <div className='w-full h-full flex justify-center items-center'>
+    <div className='w-full min-h-screen flex justify-center items-center box-border p-6'>
       <div className='container-v'>
         <div className='relative hidden lg:flex-1 lg:flex lg:flex-col gap-10 lg:h-full lg:w-full justify-center items-center'>
           <Image src='/assets/logo.png' height={200} width={200} alt='logo' className='absolut z-10'/>
