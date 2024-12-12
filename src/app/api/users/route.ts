@@ -1,5 +1,5 @@
 import { db } from "@/db";
-import { entries, users, friendsOfUser } from "@/db/schema/users";
+import { users, friendsOfUser } from "@/db/schema/users";
 import { NextResponse } from "next/server";
 import {eq, ne, and, isNull} from 'drizzle-orm'
 import { currentUser } from "@clerk/nextjs/server";

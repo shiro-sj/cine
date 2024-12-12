@@ -23,8 +23,6 @@ export const metadata: Metadata = {
 import {Providers} from "./providers";
 import SideBar from "@/components/main/sidebar";
 import LayoutWrapper from "./layoutWrapper";
-import { Divider } from "@nextui-org/divider";
-
 
 export default function RootLayout({children}: { children: React.ReactNode }) {
   return (

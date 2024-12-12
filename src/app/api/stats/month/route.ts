@@ -1,7 +1,7 @@
 import { users, entries, entriesOnGenre, genres } from "@/db/schema/users";
 import { currentUser } from "@clerk/nextjs/server";
 import { db } from "@/db"
-import { eq, and, gte, sum, countDistinct, desc, count } from "drizzle-orm";
+import { eq, and, gte, sum, desc, count } from "drizzle-orm";
 import { NextResponse } from "next/server";
 import { getDayOfWeek, sortByDayOfWeek } from "@/lib/helpers";
 

@@ -3,9 +3,6 @@ import { users } from "@/db/schema/users";
 import { NextResponse } from "next/server";
 import { eq } from 'drizzle-orm'
 
-let username: string;
-
-
 export async function GET(request: Request) {
     try {
         const url = new URL(request.url);

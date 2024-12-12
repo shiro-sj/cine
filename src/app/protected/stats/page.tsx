@@ -1,6 +1,6 @@
 'use client'
 import WatchStatsByWeekdayChart from '@/components/graphs/weekday'
-import { Button, ButtonGroup, Divider, ScrollShadow } from '@nextui-org/react'
+import { Button, ButtonGroup, ScrollShadow } from '@nextui-org/react'
 import React, { useEffect, useState } from 'react'
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
 import AnalyticsIcon from '@mui/icons-material/Analytics';

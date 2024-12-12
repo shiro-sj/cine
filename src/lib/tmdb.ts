@@ -17,7 +17,7 @@ export async function searchSeries(searchUrl: string, title: string) {
       return null; 
     }
 
-    for (let result of response.data.results) {
+    for (const result of response.data.results) {
       if (
         title === result.name || 
         title === result.original_name
@@ -61,7 +61,7 @@ export async function getGenres(){
 
     try{
         await db.delete(genres)
-        for (let type of types){
+        for (const type of types){
             try{
                 const response = await axios.get(`${genreUrl}/${type}/list`,{
                     params:{
@@ -70,7 +70,7 @@ export async function getGenres(){
                     }
                 })
                 if (response!= null){
-                    for (let genre of response.data.genres){
+                    for (const genre of response.data.genres){
                         try{
                             await db.insert(genres).values({genreID:genre.id, name: genre.name, type: type } )
                         } catch{
@@ -103,7 +103,7 @@ export async function findMovie(findUrl:string, id:string|null){
 };
 
 
-export async function findSeries(findUrl:String, id:string |null){
+export async function findSeries(findUrl:string, id:string |null){
   try{
       const response = await axios.get(`${findUrl}/tv/${id}`, {
       params:{
@@ -119,17 +119,17 @@ export async function findSeries(findUrl:String, id:string |null){
   };
 
   export function jaccardCompare(str1: string, str2: string){
-    let string1 = str1.toLowerCase().split(/\W+/)
-    let string2 = str2.toLowerCase().split(/\W+/)
-    let intersection = new Set([...string1].filter(x=>string2.includes(x)));
-    let union = new Set([...string1, ...string2]);
+    const string1 = str1.toLowerCase().split(/\W+/)
+    const string2 = str2.toLowerCase().split(/\W+/)
+    const intersection = new Set([...string1].filter(x=>string2.includes(x)));
+    const union = new Set([...string1, ...string2]);
 
-    let similarity = intersection.size / union.size;
+    const similarity = intersection.size / union.size;
 
     return similarity;
 }
 
-  export async function findEpisode(findUrl:String, id:string | null, episodeName:string, season: string|null){
+  export async function findEpisode(findUrl:string, id:string | null, episodeName:string, season: string|null){
     try {
         const response = await axios.get(`${findUrl}/tv/${id}/season/${season}`,{
         params:{
@@ -137,8 +137,8 @@ export async function findSeries(findUrl:String, id:string |null){
         }
         })
     
-        for (let episodeNumber in response.data.episodes){
-        let name = response.data.episodes[episodeNumber].name
+        for (const episodeNumber in response.data.episodes){
+        const name = response.data.episodes[episodeNumber].name
         const index = jaccardCompare(name, episodeName);
         if (index>=0.5){
             return response.data.episodes[episodeNumber];
@@ -146,6 +146,6 @@ export async function findSeries(findUrl:String, id:string |null){
         }
     
     } catch (error) {
-        console.log(`Error finding ${id} season: ${season} : ${episodeName} `)
+        console.log(`Error: ${error} --- Error finding ${id} season: ${season} : ${episodeName} `)
     }
     }

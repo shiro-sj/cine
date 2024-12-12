@@ -52,7 +52,7 @@ export async function GET() {
                 .groupBy(entries.tmdbId, entries.title);
 
             const enrichedResults = await Promise.all(results.map(async (entry) => {
-                const { tmdbId, title, type } = entry;
+                const { tmdbId, type } = entry;
                 try {
                     if (tmdbId && type) {
                         const { poster, backdrop } = await getPoster(tmdbId, type);

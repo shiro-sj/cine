@@ -1,6 +1,5 @@
 import { db } from "@/db";
 import { entries, entriesOnGenre, genres, users } from "@/db/schema/users";
-import { currentUser } from "@clerk/nextjs/server"
 import { count, eq, and, gte, sum, countDistinct, desc } from "drizzle-orm";
 import { NextResponse } from "next/server";
 

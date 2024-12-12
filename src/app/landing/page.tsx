@@ -1,4 +1,4 @@
-import { SignInButton } from '@clerk/nextjs'
+
 import { Button } from '@nextui-org/react'
 import React from 'react'
 
@@ -8,7 +8,7 @@ function Landing() {
        <div className='relative w-full'>
           <img src='/assets/eye.svg' className='w-full h-[75vh]' alt="Eye Icon" />
           <h1 className='absolute top-1/3 left-1/2 transform -translate-x-1/2 text-6xl text-center'>
-            everything you've ever cine.
+            everything you&apos;ve ever cine.
           </h1>
           <p className='absolute top-2/3 left-1/2 transform -translate-x-1/2 text-4xl text-center pr-6'>
             all in one place.

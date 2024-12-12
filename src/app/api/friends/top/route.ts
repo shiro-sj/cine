@@ -1,9 +1,8 @@
-import { currentUser } from "@clerk/nextjs/server";
+
 import { db } from "@/db";
 import { entries, entriesOnGenre, genres, users } from "@/db/schema/users";
-import { eq, count, desc, asc, countDistinct } from 'drizzle-orm'
+import { eq, count, desc, countDistinct } from 'drizzle-orm'
 import { NextResponse } from "next/server";
-import { countReset } from "console";
 import axios from "axios";
 
 export async function GET(request: Request){
@@ -34,7 +33,6 @@ export async function GET(request: Request){
     try{
         const url = new URL(request.url);
         const username = url.searchParams.get("username");
-        const setback = 1;
         
 
         if (username){
@@ -60,7 +58,7 @@ export async function GET(request: Request){
                 .orderBy(desc(count(entriesOnGenre.id)));
 
             const enrichedResults = await Promise.all(topWatched.map(async (entry) => {
-                const { id, title, type } = entry;
+                const { id, type } = entry;
                 try {
                     if (id && type) {
                         const { poster, backdrop } = await getPoster(id, type);

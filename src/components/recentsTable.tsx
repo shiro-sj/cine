@@ -1,5 +1,5 @@
 'use client'
-import { Table, Avatar, TableHeader, TableBody, TableCell, TableColumn, TableRow, Image} from '@nextui-org/react'
+import { Table, TableHeader, TableBody, TableCell, TableColumn, TableRow, Image} from '@nextui-org/react'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 

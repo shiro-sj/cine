@@ -7,7 +7,6 @@ import { NextResponse } from "next/server";
 export async function GET(){
     try{
         const user = await currentUser();
-        const setback = 1;
 
         if (user){
             const comparisonDate = new Date();

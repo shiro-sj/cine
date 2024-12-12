@@ -1,7 +1,6 @@
 import { db } from '@/db';
 import { entries, users } from '@/db/schema/users';
 import { eq, gte, and, desc, max } from "drizzle-orm";
-import { currentUser } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
 import axios from 'axios';
 
@@ -54,7 +53,7 @@ export async function GET(request: Request) {
                 .groupBy(entries.tmdbId, entries.title);
 
             const enrichedResults = await Promise.all(results.map(async (entry) => {
-                const { tmdbId, title, type } = entry;
+                const { tmdbId, type } = entry;
                 try {
                     if (tmdbId && type) {
                         const { poster, backdrop } = await getPoster(tmdbId, type);

@@ -1,15 +1,13 @@
 import { currentUser } from "@clerk/nextjs/server";
 import { db } from "@/db";
 import { entries, entriesOnGenre, genres, users } from "@/db/schema/users";
-import { eq, count, desc, asc, countDistinct } from 'drizzle-orm'
+import { eq, count, desc, countDistinct } from 'drizzle-orm'
 import { NextResponse } from "next/server";
-import { countReset } from "console";
 
 export async function GET(){
         
     try{
         const user = await currentUser();
-        const setback = 1;
 
         if (user){
             

@@ -1,9 +1,9 @@
-import { users, entries, entriesOnGenre, genres } from "@/db/schema/users";
-import { currentUser } from "@clerk/nextjs/server";
+import { users, entries} from "@/db/schema/users";
 import { db } from "@/db"
-import { eq, and, sum, desc, count } from "drizzle-orm";
+import { eq, sum, count } from "drizzle-orm";
 import { NextResponse } from "next/server";
-import { getDayOfWeek, sortByDayOfWeek, sortByEntriesCount } from "@/lib/helpers";
+import { getDayOfWeek, sortByEntriesCount } from "@/lib/helpers";
+
 
 export async function GET(request: Request){
 

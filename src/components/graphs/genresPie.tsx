@@ -1,8 +1,5 @@
 import { GenrePieChartProps } from '@/lib/interfaces';
-import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
-
 
 function GenrePieChart({topGenres}: GenrePieChartProps) {
 

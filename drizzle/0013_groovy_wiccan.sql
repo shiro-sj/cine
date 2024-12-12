@@ -1,6 +1,0 @@
--- ALTER TABLE "entries_genre" ADD COLUMN "userId" integer NOT NULL;--> statement-breakpoint
--- DO $$ BEGIN
---  ALTER TABLE "entries_genre" ADD CONSTRAINT "entries_genre_userId_users_id_fk" FOREIGN KEY ("userId") REFERENCES "public"."users"("id") ON DELETE no action ON UPDATE no action;
--- EXCEPTION
---  WHEN duplicate_object THEN null;
--- END $$;

@@ -1,6 +1,6 @@
 'use client'
 import { FriendsProfileProps, Genre } from '@/lib/interfaces'
-import { Card, CardBody, CardFooter, Image } from '@nextui-org/react'
+import { Card, CardBody, CardFooter} from '@nextui-org/react'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 

@@ -2,11 +2,7 @@
 import { Avatar, Button } from '@nextui-org/react';
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { User } from '@/lib/interfaces';
-
-interface FriendsProfileProps {
-    username: string
-}
+import { FriendsProfileProps, User } from '@/lib/interfaces';
 
 function FriendsProfile({username}: FriendsProfileProps) {
     const [status, setStatus] = useState('');
@@ -19,6 +15,7 @@ function FriendsProfile({username}: FriendsProfileProps) {
               //console.log(response.data.friendship)
               setStatus(response.data.friendship)
             } catch (error) {
+                console.log(error)
             
             }
         }
@@ -28,6 +25,7 @@ function FriendsProfile({username}: FriendsProfileProps) {
                 const response = await axios.get(`/api/friends/getData?username=${username}`)
                 setFriendData(response.data.friendsData[0])
             } catch (error) {
+                console.log(error)
                 
             }
         }

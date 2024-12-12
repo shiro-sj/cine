@@ -1,8 +1,8 @@
 'use client'
-import { Avatar, Button } from '@nextui-org/react';
+import { Avatar} from '@nextui-org/react';
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { FriendsProfileProps, User } from '@/lib/interfaces';
+import { User } from '@/lib/interfaces';
 
 function ProfileHeader() {
     
@@ -15,6 +15,7 @@ function ProfileHeader() {
                 const response = await axios.get(`/api/user`)
                 setData(response.data[0])
             } catch (error) {
+                console.log(error)
                 
             }
         }

@@ -1,10 +1,10 @@
 'use client'
 import {UserButton, useUser} from "@clerk/nextjs"
 import StatGrid from "@/components/home/statGrid"
-import { avatar, Avatar, Badge, Button, Card, CardBody, CardFooter, Divider, Input, Image, Listbox, ListboxItem, ScrollShadow } from "@nextui-org/react";
+import {Button, Input, Image,ScrollShadow } from "@nextui-org/react";
 import Link from "next/link";
 import Diversity3RoundedIcon from '@mui/icons-material/Diversity3Rounded';
-import LocalActivityIcon from '@mui/icons-material/LocalActivity';
+
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import Footer from "@/components/main/footer";
 import { useEffect, useState } from "react";
@@ -18,14 +18,11 @@ function Home() {
     const[recents, setRecents] = useState<recentEntries[]>([])
     const {user, isSignedIn} = useUser();
     const [friends, setFriends] = useState<Friend[]>([])
-    let avatarSrc;
     let username;
 
     if (isSignedIn){
-        avatarSrc = user.imageUrl;
         username = user.username;
     } else{
-        avatarSrc = './default-avatar.png'
         username = 'user'
     }
 
@@ -47,6 +44,7 @@ function Home() {
           setFriends(response.data)
           console.log(response.data)
         } catch (error) {
+          console.log(error)
         
         }
       }

@@ -1,21 +1,17 @@
 
 'use client'
-import { friendsOfUser, users } from '@/db/schema/users';
-import { useUser } from '@clerk/nextjs';
+import { users } from '@/db/schema/users';
 import { Autocomplete, AutocompleteItem, Avatar, Button} from '@nextui-org/react'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import {eq} from "drizzle-orm"
-import { db } from '@/db';
+
 
 
 function SearchUser() {
     const [usersList, setUsersList] = useState<any>(null);
     const [currentUser, setCurrentUser] = useState<any>()
-    const [clerkId, setClerkId] = useState<string>();
     const [loading ,setLoading] = useState(true);
     const [selectedUser, setSelectedUser] = useState<any>();
-    const {user, isSignedIn} = useUser();
 
     useEffect(()=>{
         const getUsers = async()=>{
@@ -61,8 +57,9 @@ function SearchUser() {
     const setUser = (id:any) => {
         console.log(id)
         setSelectedUser(id)
-        
     }
+
+    console.log(setUser)
 
     
   return (

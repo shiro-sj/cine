@@ -7,7 +7,6 @@ import React, { useEffect, useState } from 'react'
 function FriendsList() {
     const [requests, setRequests] = useState<any[]>([])
     const [currentUser, setCurrentUser] = useState<any>();
-    const [selectedRequest, setSelectedRequest] = useState<any>();
     const [sentRequests, setSentRequests] = useState<any[]>([])
     const [friends, setFriends] = useState<any[]>([])
 
@@ -16,6 +15,7 @@ function FriendsList() {
             try{
                 const result = await axios.get('/api/users')
                 setCurrentUser(result.data.currentUser)
+                console.log(currentUser)
             }catch(error){
                 console.log(`Error: ${error}`)
             }
@@ -43,6 +43,7 @@ function FriendsList() {
         
         try{
             const acceptedRequest = await axios.post('/api/friends/respondToRequest', {id: id, status: 'confirmed'})
+            console.log(acceptedRequest)
             alert('Accepted request.')
         }catch(error){
             console.log(`Error: ${error}`)
@@ -53,6 +54,7 @@ function FriendsList() {
         
         try{
             const rejectedRequest = await axios.post('/api/friends/unfriendUser', {id: id, status: 'unfriended'})
+            console.log(rejectedRequest)
             alert('Rejected request.')
         }catch(error){
             console.log(`Error: ${error}`)
@@ -63,6 +65,7 @@ function FriendsList() {
         
         try{
             const unfriendedUser = await axios.post('/api/friends/unfriendUser', {id: id, status: 'unfriended'})
+            console.log(unfriendedUser)
             alert('Unfriended user.')
         }catch(error){
             console.log(`Error: ${error}`)

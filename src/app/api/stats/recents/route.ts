@@ -24,7 +24,7 @@ export async function GET(){
         }
 
     }catch(error){
-        return new Response('Error fetching recents', {status: 401})
+        return new Response(`Error: ${error}`, {status: 401})
     }
     
 }
